@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thames Replica (with Libraries)</title>
+
+    <!-- Favicon (Optional - Add your own) -->
+    <!-- <link href="assets/img/favicon.png" rel="icon"> -->
+
+    <!-- Google Fonts (Optional - closer match to original) -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,600,600i,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Custom CSS -->
+    <style>
+        /* --- Global Styles --- */
+        :root {
+            --primary-color: #0ABAB5; /* Teal accent color */
+            --dark-color: #333;
+            --secondary-dark: #555;
+            --light-color: #f8f9fa;
+            --white-color: #fff;
+            --grey-color: #777;
+            --border-color: #eee;
+            --section-padding: 80px;
+            --transition-speed: 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--secondary-dark);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color var(--transition-speed);
+        }
+
+        a:hover {
+            color: var(--dark-color);
+            text-decoration: none; /* Bootstrap override */
+        }
+
+        section {
+            padding: var(--section-padding) 0;
+            overflow: hidden;
+        }
+
+        /* --- Utility Classes --- */
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all var(--transition-speed);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary:hover {
+            background-color: #089a95;
+            border-color: #089a95;
+        }
+
+         .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all var(--transition-speed);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+        }
+
+        .section-title {
+            text-align: center;
+            padding-bottom: 40px; /* Reduced from 60 for better spacing */
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            position: relative;
+            display: inline-block; /* Important for centering the line */
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title p {
+            margin-bottom: 0;
+            color: var(--grey-color);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- Header --- */
+        #header {
+            height: 70px;
+            transition: all 0.5s;
+            z-index: 997;
+            background: var(--white-color);
+            box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        #header.header-scrolled {
+            height: 60px;
+            box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        #header .logo a {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            letter-spacing: 1px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        #header .logo a span {
+             color: var(--primary-color);
+         }
+
+        /* Navbar */
+        .navbar {
+            padding: 0;
+        }
+
+        .navbar ul {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .navbar li {
+            position: relative;
+        }
+
+        .navbar a,
+        .navbar a:focus {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0 10px 24px; /* Adjust spacing */
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--secondary-dark);
+            white-space: nowrap;
+            transition: 0.3s;
+        }
+
+        .navbar a i,
+        .navbar a:focus i {
+            font-size: 12px;
+            line-height: 0;
+            margin-left: 5px;
+        }
+
+        .navbar a:hover,
+        .navbar .active,
+        .navbar .active:focus,
+        .navbar li:hover>a {
+            color: var(--primary-color);
+        }
+
+        /* Mobile Nav specific */
+         .navbar-toggler {
+             border: none;
+             font-size: 1.5rem;
+             color: var(--dark-color);
+         }
+         .navbar-toggler:focus {
+             box-shadow: none;
+         }
+         @media (max-width: 991px) {
+             .navbar-collapse {
+                position: fixed;
+                top: 0; /* Adjust if header height changes drastically */
+                right: -100%;
+                width: 100%;
+                max-width: 300px;
+                bottom: 0;
+                background: rgba(255, 255, 255, 0.95);
+                transition: right 0.3s ease-in-out;
+                z-index: 9995;
+                padding: 20px;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+                overflow-y: auto;
+            }
+            .navbar-collapse.show {
+                right: 0;
+            }
+            .navbar-nav {
+                padding-top: 50px; /* Space from top */
+            }
+             .navbar a, .navbar a:focus {
+                padding: 10px 5px;
+                border-bottom: 1px solid var(--border-color);
+             }
+             /* Simple overlay for when menu is open */
+             body.mobile-nav-active::before { /* Not directly tied to Bootstrap but useful */
+                content: "";
+                position: fixed;
+                inset: 0;
+                background: rgba(0,0,0,0.5);
+                z-index: 9990; /* Below nav */
+             }
+         }
+
+        /* --- Hero Section --- */
+        #hero {
+            width: 100%;
+            min-height: 150vh; /* Use min-height for flexibility */
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/home/ammar/Desktop/1.webp') center center;
+            background-size: cover;
+            position: relative;
+            display: flex; /* Use flexbox for centering */
+            align-items: center;
+            justify-content: center;
+            padding: 0; /* Remove section padding */
+            color: var(--white-color);
+        }
+
+        #hero h1 {
+            margin: 0 0 10px 0;
+            font-size: 3rem; /* Adjusted size */
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--white-color);
+        }
+        #hero p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px; /* Keep bottom margin */
+            font-size: 1.2rem;
+            font-weight: 300;
+            max-width: 600px;
+            /* Add these two lines for horizontal centering */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+
+         #hero .btn-primary {
+             font-size: 1rem;
+             padding: 12px 35px;
+         }
+
+         @media (max-width: 768px) {
+             #hero h1 { font-size: 2.2rem; }
+             #hero p { font-size: 1rem; }
+         }
+
+        /* --- About Section --- */
+        #about .content h3 {
+            font-weight: 600;
+            font-size: 1.8rem;
+        }
+
+        #about .content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #about .content ul li {
+            padding-left: 28px;
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        #about .content ul i {
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 20px;
+            color: var(--primary-color);
+        }
+
+        #about .content p:last-child {
+            margin-bottom: 0;
+        }
+        #about .about-img img {
+             border-radius: 8px;
+             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+         }
+
+        /* --- Services Section --- */
+        #services {
+            background-color: var(--light-color);
+        }
+        .service-item {
+            background-color: var(--white-color);
+            padding: 40px 30px;
+            text-align: center;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: all var(--transition-speed);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: 100%; /* Make items in a row equal height */
+             margin-bottom: 30px; /* Add space between rows on mobile */
+        }
+        .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-color: var(--primary-color);
+        }
+        .service-item .icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: inline-block;
+            transition: transform var(--transition-speed);
+        }
+        .service-item:hover .icon {
+             transform: scale(1.1);
+        }
+        .service-item h4 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+         .service-item h4 a {
+             color: var(--dark-color);
+         }
+         .service-item h4 a:hover {
+             color: var(--primary-color);
+         }
+        .service-item p {
+            color: var(--grey-color);
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        /* --- Portfolio Section --- */
+        #portfolio #portfolio-flters {
+            padding: 0;
+            margin: 0 auto 25px auto;
+            list-style: none;
+            text-align: center;
+        }
+
+        #portfolio #portfolio-flters li {
+            cursor: pointer;
+            display: inline-block;
+            padding: 10px 18px;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1;
+            text-transform: uppercase;
+            color: #444444;
+            margin-bottom: 5px;
+            transition: all 0.3s ease-in-out;
+            border-radius: 50px;
+            font-family: "Poppins", sans-serif;
+        }
+
+        #portfolio #portfolio-flters li:hover,
+        #portfolio #portfolio-flters li.filter-active {
+            color: #fff;
+            background: var(--primary-color);
+        }
+
+        .portfolio-item {
+            margin-bottom: 30px; /* Gutter replacement */
+            overflow: hidden;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .portfolio-item img {
+             transition: transform 0.5s ease;
+        }
+
+        .portfolio-item .portfolio-info {
+            opacity: 0;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            z-index: 3;
+            right: 0;
+            transition: all ease-in-out 0.3s;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            color: var(--white-color);
+        }
+
+        .portfolio-item .portfolio-info h4 {
+            font-size: 1.1rem;
+            color: var(--white-color);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .portfolio-item .portfolio-info p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9em;
+            margin-bottom: 0;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+        .portfolio-item:hover .portfolio-info {
+            opacity: 1;
+        }
+
+        /* Isotope transition */
+        .portfolio-container {
+            transition: height .4s ease-out !important;
+        }
+
+
+        /* --- Testimonials Section --- */
+        #testimonials {
+            background: var(--light-color);
+        }
+
+        .testimonial-item {
+            box-sizing: content-box;
+            padding: 30px;
+            margin: 15px; /* Spacing between items in carousel view */
+            min-height: 200px; /* Adjust as needed */
+            background: #fff;
+            box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
+            position: relative;
+            border-radius: 8px;
+            border-left: 5px solid var(--primary-color);
+        }
+        .testimonial-item p.quote {
+            font-style: italic;
+            margin: 0 0 20px 0;
+            padding: 0;
+            position: relative;
+            padding-left: 25px; /* Space for quote icon */
+        }
+        .testimonial-item p.quote::before {
+            content: "\f10d"; /* FontAwesome quote left */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            position: absolute;
+            left: -5px;
+            top: -5px;
+            opacity: 0.6;
+        }
+
+        .testimonial-item .author {
+            text-align: right;
+        }
+
+         .testimonial-item .author h4 {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin: 0 0 5px 0;
+            color: var(--dark-color);
+        }
+
+        .testimonial-item .author span {
+            font-size: 0.9rem;
+            color: var(--grey-color);
+        }
+
+        /* Owl Carousel Dots */
+        .owl-carousel .owl-dots {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .owl-carousel .owl-dot {
+            display: inline-block;
+            margin: 0 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ddd !important; /* Override default */
+            transition: background-color 0.3s ease;
+        }
+
+        .owl-carousel .owl-dot.active {
+            background-color: var(--primary-color) !important; /* Override default */
+        }
+
+        /* --- Team Section --- */
+        .team-member {
+            text-align: center;
+            margin-bottom: 30px; /* Gutter replacement */
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        .team-member:hover {
+             transform: translateY(-5px);
+        }
+        .team-member img {
+            max-width: 100%;
+            height: auto;
+        }
+        .team-member .member-info {
+            padding: 25px 15px;
+        }
+        .team-member h4 {
+            font-weight: 700;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+            color: var(--dark-color);
+        }
+        .team-member span {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #aaaaaa;
+            margin-bottom: 15px;
+        }
+        .team-member .social a {
+            transition: ease-in-out 0.3s;
+            color: #aaaaaa;
+            margin: 0 8px;
+            font-size: 1.1rem;
+        }
+        .team-member .social a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- Blog Section --- */
+         #blog {
+            background-color: var(--light-color);
+        }
+        .blog-post {
+            margin-bottom: 30px; /* Gutter replacement */
+            box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+            overflow:hidden;
+            background: var(--white-color);
+             transition: transform 0.3s ease;
+        }
+         .blog-post:hover {
+             transform: translateY(-5px);
+        }
+        .blog-post img {
+             max-width: 100%;
+             height: auto;
+        }
+        .blog-post .post-content {
+            padding: 25px;
+        }
+        .blog-post .post-meta {
+            font-size: 0.85rem;
+            color: var(--grey-color);
+            margin-bottom: 10px;
+        }
+        .blog-post .post-meta span {
+            margin-right: 15px;
+        }
+        .blog-post .post-meta i {
+            margin-right: 5px;
+            color: var(--primary-color);
+        }
+        .blog-post h3.post-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .blog-post h3.post-title a {
+            color: var(--dark-color);
+            transition: color var(--transition-speed);
+        }
+         .blog-post h3.post-title a:hover {
+            color: var(--primary-color);
+         }
+        .blog-post p {
+            font-size: 0.95rem;
+            color: var(--secondary-dark);
+            margin-bottom: 20px;
+        }
+        .blog-post .read-more a {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+             transition: color var(--transition-speed);
+        }
+        .blog-post .read-more a:hover {
+            color: var(--dark-color);
+            text-decoration: underline;
+        }
+        .blog-post .read-more i {
+             margin-left: 5px;
+             font-size: 0.8em;
+        }
+
+        /* --- Contact Section --- */
+        .contact .info-box {
+            color: #444444;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(214, 215, 216, 0.4);
+            padding: 20px 0 30px 0;
+            margin-bottom: 30px; /* Space below boxes */
+            border-radius: 8px;
+             background: var(--white-color);
+             display: flex; /* Use flex for vertical alignment */
+             flex-direction: column;
+             justify-content: center;
+             align-items: center;
+             height: 100%; /* Equal height */
+        }
+
+        .contact .info-box i {
+            font-size: 32px;
+            color: var(--primary-color);
+            border-radius: 50%;
+            padding: 8px;
+            /* border: 2px dotted #f0f0f0; */ /* Alternative style */
+            width: 60px;
+            height: 60px;
+            line-height: 44px; /* Adjust for vertical center */
+            margin-bottom: 15px;
+        }
+
+        .contact .info-box h3 {
+            font-size: 1.2rem;
+            color: #666666;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        .contact .info-box p {
+            padding: 0;
+            line-height: 1.5;
+            font-size: 14px;
+            margin-bottom: 0;
+            color: var(--secondary-dark);
+        }
+
+        .contact .php-email-form {
+            box-shadow: 0 0 30px rgba(214, 215, 216, 0.4);
+            padding: 30px;
+            border-radius: 8px;
+             background: var(--white-color);
+             height: 100%; /* Equal height with info boxes */
+        }
+
+        .contact .php-email-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .contact .php-email-form input,
+        .contact .php-email-form textarea {
+            border-radius: 4px;
+            box-shadow: none;
+            font-size: 14px;
+             border: 1px solid #ced4da; /* Bootstrap default */
+        }
+         .contact .php-email-form input:focus,
+         .contact .php-email-form textarea:focus {
+              border-color: var(--primary-color);
+              box-shadow: 0 0 0 0.2rem rgba(10, 186, 181, 0.25); /* Primary color focus */
+         }
+
+
+        .contact .php-email-form button[type="submit"] {
+            /* Uses .btn-primary */
+        }
+
+        /* --- Footer --- */
+        #footer {
+            background: var(--dark-color);
+            padding: 30px 0;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            text-align: center;
+        }
+
+        #footer .copyright strong {
+            color: var(--white-color);
+        }
+
+        #footer .credits {
+            padding-top: 5px;
+            font-size: 13px;
+        }
+
+        #footer .credits a {
+            color: var(--primary-color);
+            transition: 0.3s;
+        }
+        #footer .credits a:hover {
+             color: var(--white-color);
+        }
+
+        /* --- Scroll-to-Top Button --- */
+        .scroll-to-top {
+            position: fixed;
+            visibility: hidden; /* Use visibility for transitions */
+            opacity: 0;
+            right: 15px;
+            bottom: 15px;
+            z-index: 996;
+            background: var(--primary-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transition: all 0.4s;
+        }
+
+        .scroll-to-top i {
+            font-size: 24px;
+            color: #fff;
+            line-height: 0; /* Helps center icon */
+            position: absolute; /* Center icon */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .scroll-to-top:hover {
+            background: #0caaa4; /* Slightly different hover */
+            color: #fff;
+        }
+
+        .scroll-to-top.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center">
+        <div class="container d-flex align-items-center justify-content-between">
+
+            <div class="logo">
+                 <a href="index.html">THA<span>MES</span></a>
+                <!-- Or use an image: <a href="index.html"><img src="logo.png" alt="Thames Logo" class="img-fluid"></a> -->
+            </div>
+
+            <nav id="navbar" class="navbar navbar-expand-lg">
+                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav"> <!-- Changed ID slightly for convention -->
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link scrollto active" href="#hero">Home</a></li>
+                        <li class="nav-item"><a class="nav-link scrollto" href="#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link scrollto" href="#services">Services</a></li>
+                        <li class="nav-item"><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
+                        <li class="nav-item"><a class="nav-link scrollto" href="#testimonials">Testimonials</a></li>
+                        <li class="nav-item"><a class="nav-link scrollto" href="#team">Team</a></li>
+                        <li class="nav-item"><a class="nav-link scrollto" href="#blog">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </nav><!-- .navbar -->
+
+        </div>
+    </header><!-- End Header -->
+
+    <!-- ======= Hero Section ======= -->
+    <section id="hero">
+        <div class="container text-center">
+            <h1>Welcome to Thames</h1>
+            <p>We are team of talented designers making websites with passion</p>
+            <a href="#about" class="btn btn-primary scrollto">Get Started</a>
+        </div>
+    </section><!-- End Hero -->
+
+    <main id="main">
+
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-lg-6 about-img order-lg-2">
+                        <img src="/home/ammar/Desktop/test.png" class="img-fluid" alt="About Us">
+                    </div>
+                    <div class="col-lg-6 content pt-4 pt-lg-0 order-lg-1">
+                        <h3>Voluptatem dignissimos provident quasi corporis</h3>
+                        <p class="fst-italic">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </p>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                            <li><i class="fas fa-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                            <li><i class="fas fa-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                        </ul>
+                        <p>
+                            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                            culpa qui officia deserunt mollit anim id est laborum
+                        </p>
+                         <a href="#" class="btn btn-outline-primary mt-3">Learn More</a>
+                    </div>
+                </div>
+
+            </div>
+        </section><!-- End About Section -->
+
+        <!-- ======= Services Section ======= -->
+        <section id="services" class="services">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>Services</h2>
+                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate.</p>
+                </div>
+
+                <div class="row gy-4"> <!-- {/* gy-4 adds vertical gutter */} -->
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="service-item">
+                            <div class="icon"><i class="fas fa-briefcase"></i></div>
+                            <h4><a href="#">Lorem Ipsum</a></h4>
+                            <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                         <div class="service-item">
+                            <div class="icon"><i class="fas fa-tasks"></i></div>
+                            <h4><a href="#">Dolor Sitema</a></h4>
+                            <p>Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="service-item">
+                            <div class="icon"><i class="fas fa-chart-bar"></i></div>
+                            <h4><a href="#">Sed ut perspiciatis</a></h4>
+                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="service-item">
+                            <div class="icon"><i class="fas fa-binoculars"></i></div>
+                            <h4><a href="#">Nemo Enim</a></h4>
+                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+                        </div>
+                    </div>
+
+                     <div class="col-lg-4 col-md-6">
+                         <div class="service-item">
+                            <div class="icon"><i class="fas fa-sun"></i></div>
+                            <h4><a href="#">Magni Dolore</a></h4>
+                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+                        </div>
+                    </div>
+
+                     <div class="col-lg-4 col-md-6">
+                         <div class="service-item">
+                            <div class="icon"><i class="fas fa-calendar-alt"></i></div>
+                            <h4><a href="#">Eiusmod Tempor</a></h4>
+                            <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Services Section -->
+
+        <!-- ======= Portfolio Section ======= -->
+        <section id="portfolio" class="portfolio">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>Portfolio</h2>
+                    <p>Check out our beautiful portfolio. Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem.</p>
+                </div>
+
+                 <div class="row">
+                    <div class="col-lg-12 d-flex justify-content-center">
+                        <ul id="portfolio-flters">
+                            <li data-filter="*" class="filter-active">All</li>
+                            <li data-filter=".filter-app">App</li>
+                            <li data-filter=".filter-card">Card</li>
+                            <li data-filter=".filter-web">Web</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row portfolio-container">
+
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                        <img src="/home/ammar/Desktop/esaam.png" class="img-fluid" alt="">
+                        <div class="portfolio-info">
+                            <h4>App 1</h4>
+                            <p>App</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+                        <img src="/home/ammar/Desktop/esaam.png" class="img-fluid" alt="">
+                        <div class="portfolio-info">
+                            <h4>Web 1</h4>
+                            <p>Web</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                        <img src="/home/ammar/Desktop/esaam.png" class="img-fluid" alt="">
+                        <div class="portfolio-info">
+                            <h4>App 2</h4>
+                            <p>App</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+                        <img src="/home/ammar/Desktop/esaam.png" class="img-fluid" alt="">
+                        <div class="portfolio-info">
+                            <h4>Card 1</h4>
+                            <p>Card</p>
+                        </div>
+                    </div>
+
+                     <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+                        <img src="/home/ammar/Desktop/esaam.png" class="img-fluid" alt="">
+                        <div class="portfolio-info">
+                            <h4>Card 2</h4>
+                            <p>Card</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+                        <img src="/home/ammar/Desktop/esaam.png" class="img-fluid" alt="">
+                        <div class="portfolio-info">
+                            <h4>Web 2</h4>
+                            <p>Web</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                         <img src="/home/ammar/Desktop/esaam.png" class="img-fluid" alt="">
+                        <div class="portfolio-info">
+                            <h4>App 3</h4>
+                            <p>App</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+                        <img src="/home/ammar/Desktop/esaam.png" class="img-fluid" alt="">
+                        <div class="portfolio-info">
+                            <h4>Web 3</h4>
+                            <p>Web</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Portfolio Section -->
+
+         <!-- ======= Testimonials Section ======= -->
+        <section id="testimonials" class="testimonials">
+          <div class="container">
+
+            <div class="section-title">
+              <h2>Testimonials</h2>
+              <p>What they are saying about us. Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem.</p>
+            </div>
+
+            <div class="owl-carousel owl-theme testimonials-carousel">
+
+                <div class="testimonial-item">
+                    <p class="quote">
+                    Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                    </p>
+                    <div class="author">
+                        <!-- <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt=""> -->
+                        <h4>Saul Goodman</h4>
+                        <span>Ceo &amp; Founder</span>
+                    </div>
+                </div><!-- End testimonial item -->
+
+                 <div class="testimonial-item">
+                    <p class="quote">
+                    Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                    </p>
+                    <div class="author">
+                        <h4>Sara Wilsson</h4>
+                        <span>Designer</span>
+                    </div>
+                </div><!-- End testimonial item -->
+
+                <div class="testimonial-item">
+                    <p class="quote">
+                    Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                    </p>
+                    <div class="author">
+                        <h4>Jena Karlis</h4>
+                        <span>Store Owner</span>
+                    </div>
+                </div><!-- End testimonial item -->
+
+                 <div class="testimonial-item">
+                    <p class="quote">
+                    Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+                    </p>
+                    <div class="author">
+                        <h4>Matt Brandon</h4>
+                        <span>Freelancer</span>
+                    </div>
+                </div><!-- End testimonial item -->
+
+            </div><!-- End Owl Carousel -->
+
+          </div>
+        </section><!-- End Testimonials Section -->
+
+        <!-- ======= Team Section ======= -->
+        <section id="team" class="team">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>Team</h2>
+                    <p>Our hard working team. Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem.</p>
+                </div>
+
+                <div class="row gy-4"> 
+                    <!-- {/* Add gy-4 for vertical spacing */} -->
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="team-member">
+                            <img src="/home/ammar/Desktop/esaam.png" class="img-fluid" alt="">
+                            <div class="member-info">
+                                <h4>Walter White</h4>
+                                <span>Chief Executive Officer</span>
+                                <div class="social mt-2">
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                         <div class="team-member">
+                            <img src="/home/ammar/Desktop/esaam.png" class="img-fluid" alt="">
+                            <div class="member-info">
+                                <h4>Sarah Jhonson</h4>
+                                <span>Product Manager</span>
+                                <div class="social mt-2">
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="team-member">
+                            <img src="/home/ammar/Desktop/esaam.png" class="img-fluid" alt="">
+                            <div class="member-info">
+                                <h4>William Anderson</h4>
+                                <span>CTO</span>
+                                <div class="social mt-2">
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                     <div class="col-lg-3 col-md-6">
+                         <div class="team-member">
+                            <img src="/home/ammar/Desktop/esaam.png" class="img-fluid" alt="">
+                            <div class="member-info">
+                                <h4>Amanda Jepson</h4>
+                                <span>Accountant</span>
+                                 <div class="social mt-2">
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Team Section -->
+
+        <!-- ======= Blog Section ======= -->
+        <section id="blog" class="blog">
+          <div class="container">
+
+            <div class="section-title">
+              <h2>Recent Blog Posts</h2>
+              <p>Read the latest news from our blog. Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem.</p>
+            </div>
+
+            <div class="row gy-4"> <!-- {/* Add gy-4 */} -->
+
+              <div class="col-lg-4 col-md-6">
+                  <article class="blog-post">
+                    <div class="post-img">
+                        <img src="/home/ammar/Desktop/esaam.png" alt="" class="img-fluid">
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="far fa-user"></i> John Doe</span>
+                            <span><i class="far fa-calendar-alt"></i> Jan 1, 2023</span>
+                            <!-- <span><i class="far fa-comments"></i> 12 Comments</span> -->
+                        </div>
+                        <h3 class="post-title"><a href="#">Dolorum optio tempore voluptas dignissimos</a></h3>
+                        <p>
+                            Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium...
+                        </p>
+                        <div class="read-more">
+                            <a href="#">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                 </article>
+              </div><!-- End blog post item -->
+
+               <div class="col-lg-4 col-md-6">
+                  <article class="blog-post">
+                    <div class="post-img">
+                        <img src="/home/ammar/Desktop/esaam.png" alt="" class="img-fluid">
+                    </div>
+                     <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="far fa-user"></i> Jane Smith</span>
+                            <span><i class="far fa-calendar-alt"></i> Feb 15, 2023</span>
+                        </div>
+                        <h3 class="post-title"><a href="#">Nisi magni odit consequatur autem nulla dolorem</a></h3>
+                        <p>
+                            Incidunt voluptate sit temporibus aperiam. Quia vitae aut sint ullam quis illum voluptatum...
+                        </p>
+                         <div class="read-more">
+                            <a href="#">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                 </article>
+              </div><!-- End blog post item -->
+
+               <div class="col-lg-4 col-md-6">
+                   <article class="blog-post">
+                    <div class="post-img">
+                        <img src="/home/ammar/Desktop/esaam.png" alt="" class="img-fluid">
+                    </div>
+                     <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="far fa-user"></i> Admin</span>
+                            <span><i class="far fa-calendar-alt"></i> Mar 22, 2023</span>
+                        </div>
+                        <h3 class="post-title"><a href="#">Possimus soluta ut id suscipit ea ut. In quo quia et soluta libero</a></h3>
+                        <p>
+                            Aut iste neque ut illum qui perspiciatis similique recusandae non. Fugit autem dolorem...
+                        </p>
+                         <div class="read-more">
+                            <a href="#">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                 </article>
+              </div><!-- End blog post item -->
+
+            </div><!-- End blog posts list -->
+
+          </div>
+        </section><!-- End Blog Section -->
+
+        <!-- ======= Contact Section ======= -->
+        <section id="contact" class="contact">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>Contact Us</h2>
+                    <p>Get in touch with us. Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem.</p>
+                </div>
+
+                <div class="row gy-4"> <!--{/* Add gy-4 */} -->
+                    <div class="col-lg-4">
+                        <div class="row gy-4"> <!-- {/* Nested row for info boxes */} -->
+                            <div class="col-md-6 col-lg-12">
+                                <div class="info-box">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <h3>Address</h3>
+                                    <p>A108 Adam Street,<br>New York, NY 535022</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-12">
+                                <div class="info-box">
+                                    <i class="far fa-envelope"></i>
+                                    <h3>Email Us</h3>
+                                    <p>info@example.com<br>contact@example.com</p>
+                                </div>
+                            </div>
+                             <div class="col-md-6 col-lg-12">
+                                <div class="info-box">
+                                    <i class="fas fa-phone"></i>
+                                    <h3>Call Us</h3>
+                                    <p>+1 5589 55488 55<br>+1 6678 254445 41</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <form action="#" method="post" role="form" class="php-email-form"> <!--{/* Replace # with your endpoint */} -->
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                                </div>
+                                <div class="col-md-6 form-group mt-3 mt-md-0">
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                            </div>
+                            <div class="form-group mt-3">
+                                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                            </div>
+                            <!-- Add Validation/Messages/Loading state elements if needed -->
+                            <div class="my-3">
+                                <!-- <div class="loading">Loading</div>
+                                <div class="error-message"></div>
+                                <div class="sent-message">Your message has been sent. Thank you!</div> -->
+                            </div>
+                            <div class="text-center"><button type="submit" class="btn btn-primary">Send Message</button></div>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Contact Section -->
+
+    </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container">
+            <div class="copyright">
+                &copy; Copyright <strong><span>Thames</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/thames-multipurpose-bootstrap-template/ -->
+                Simplified Replica using Bootstrap
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+
+    <!-- Scroll-to-Top Button -->
+    <a href="#" class="scroll-to-top d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></a>
+
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <!-- Owl Carousel JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Isotope JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha512-Zq2BOxyhvnRFXu0+WE6ojpZLOU2jdnqbrM1hmVdGzyeCa1DgM3X5Q4A/Is9xA1IkbUeDd7755dNNI/PzSf2Pew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Custom JS -->
+    // Custom JS
+    <script>
+        jQuery(document).ready(function($) { // <<< Runs when DOM is ready
+            "use strict";
+
+            // --- Sticky Header ---
+            // ... (keep sticky header code) ...
+
+            // --- Mobile Nav Toggle Body Class ---
+            // ... (keep mobile nav code) ...
+
+            // --- Close mobile nav on link click ---
+            // ... (keep close nav code) ...
+
+            // --- Smooth Scroll for links with .scrollto class ---
+            // ... (keep smooth scroll code) ...
+
+            // --- Activate scrollspy to add active class to navbar items on scroll ---
+            // ... (keep scrollspy code) ...
+
+            // --- Scroll-to-Top Button ---
+            // ... (keep scroll-to-top code) ...
+
+            // --- Owl Carousel for Testimonials ---
+            $('.testimonials-carousel').owlCarousel({
+                loop: true,
+                margin: 30,
+                autoplay: true,
+                autoplayTimeout: 5000,
+                autoplayHoverPause:true,
+                dots: true,
+                responsive: { 0: { items: 1 }, 768: { items: 2 }, 992: { items: 3 } }
+            });
+
+            // --- Isotope Portfolio Filtering ---
+            var portfolioContainer = $('.portfolio-container');
+            var portfolioIsotope; // Declare here to be accessible later
+
+            if (portfolioContainer.length) {
+                // Initialize Isotope directly within document.ready
+                // For 'fitRows', waiting for images is less critical than for 'masonry'
+                portfolioIsotope = portfolioContainer.isotope({
+                    itemSelector: '.portfolio-item',
+                    layoutMode: 'fitRows' // or 'masonry'
+                });
+
+                 // If using 'masonry' layout, it's still better to use imagesLoaded
+                 // to relayout after images load, even if initialized early:
+                 /*
+                 portfolioContainer.imagesLoaded( function() {
+                   portfolioIsotope.isotope('layout');
+                 });
+                 */
+
+                // Attach click handler *after* initialization attempt
+                $('#portfolio-flters li').on('click', function() {
+                    $("#portfolio-flters li").removeClass('filter-active');
+                    $(this).addClass('filter-active');
+
+                    // Check if portfolioIsotope was successfully initialized before using
+                    if (portfolioIsotope) {
+                        portfolioIsotope.isotope({
+                            filter: $(this).data('filter')
+                        });
+                         console.log('Filtering by:', $(this).data('filter')); // Debug log
+                    } else {
+                        console.error("Isotope not initialized yet."); // Debug log
+                    }
+                });
+            }
+
+             // Optional: Trigger layout again on window load just in case
+             $(window).on('load', function() {
+                if (portfolioIsotope) {
+                    portfolioIsotope.isotope('layout');
+                }
+             });
+
+
+        }); // <<< END of document.ready
+    </script>
+
+</body>
+</html>
