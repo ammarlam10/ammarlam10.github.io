@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ammar Ahmed</title>
+
+    <!-- Favicon (Optional - Add your own) -->
+    <!-- <link href="assets/img/favicon.png" rel="icon"> -->
+
+    <!-- Google Fonts (Optional - closer match to original) -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,600,600i,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Custom CSS -->
+    <style>
+        /* --- Global Styles --- */
+        :root {
+            --primary-color: #0ABAB5; /* Teal accent color */
+            --dark-color: #333;
+            --secondary-dark: #555;
+            --light-color: #f8f9fa;
+            --white-color: #fff;
+            --grey-color: #777;
+            --border-color: #eee;
+            --section-padding: 80px;
+            --transition-speed: 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--secondary-dark);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color var(--transition-speed);
+        }
+
+        a:hover {
+            color: var(--dark-color);
+            text-decoration: none; /* Bootstrap override */
+        }
+
+        section {
+            padding: var(--section-padding) 0;
+            overflow: hidden;
+        }
+
+        /* --- Utility Classes --- */
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all var(--transition-speed);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary:hover {
+            background-color: #089a95;
+            border-color: #089a95;
+        }
+
+         .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all var(--transition-speed);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+        }
+
+        .section-title {
+            text-align: center;
+            padding-bottom: 40px; /* Reduced from 60 for better spacing */
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            position: relative;
+            display: inline-block; /* Important for centering the line */
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title p {
+            margin-bottom: 0;
+            color: var(--grey-color);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- Header --- */
+        #header {
+            height: 70px;
+            transition: all 0.5s;
+            z-index: 997;
+            background: var(--white-color);
+            box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        #header.header-scrolled {
+            height: 60px;
+            box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        #header .logo a {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            letter-spacing: 1px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        #header .logo a span {
+             color: var(--primary-color);
+         }
+
+        /* Navbar */
+        .navbar {
+            padding: 0;
+        }
+
+        .navbar ul {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .navbar li {
+            position: relative;
+        }
+
+        .navbar a,
+        .navbar a:focus {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0 10px 24px; /* Adjust spacing */
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--secondary-dark);
+            white-space: nowrap;
+            transition: 0.3s;
+        }
+
+        .navbar a i,
+        .navbar a:focus i {
+            font-size: 12px;
+            line-height: 0;
+            margin-left: 5px;
+        }
+
+        .navbar a:hover,
+        .navbar .active,
+        .navbar .active:focus,
+        .navbar li:hover>a {
+            color: var(--primary-color);
+        }
+
+        /* Mobile Nav specific */
+         .navbar-toggler {
+             border: none;
+             font-size: 1.5rem;
+             color: var(--dark-color);
+         }
+         .navbar-toggler:focus {
+             box-shadow: none;
+         }
+         @media (max-width: 991px) {
+             .navbar-collapse {
+                position: fixed;
+                top: 0; /* Adjust if header height changes drastically */
+                right: -100%;
+                width: 100%;
+                max-width: 300px;
+                bottom: 0;
+                background: rgba(255, 255, 255, 0.95);
+                transition: right 0.3s ease-in-out;
+                z-index: 9995;
+                padding: 20px;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+                overflow-y: auto;
+            }
+            .navbar-collapse.show {
+                right: 0;
+            }
+            .navbar-nav {
+                padding-top: 50px; /* Space from top */
+            }
+             .navbar a, .navbar a:focus {
+                padding: 10px 5px;
+                border-bottom: 1px solid var(--border-color);
+             }
+             /* Simple overlay for when menu is open */
+             body.mobile-nav-active::before { /* Not directly tied to Bootstrap but useful */
+                content: "";
+                position: fixed;
+                inset: 0;
+                background: rgba(0,0,0,0.5);
+                z-index: 9990; /* Below nav */
+             }
+         }
+
+/* --- Remove Base Header Styling --- */
+/* Comment out or remove the previous #header rules if they interfere */
+/* #header { ... } */
+/* #header.header-scrolled { ... } */
+/* #header .logo a { ... } */
+/* .navbar { ... } etc... */
+
+/* --- New Hero Section Styling --- */
+#hero {
+    width: 100%;
+    height: 100vh; /* Force full viewport height */
+    overflow: hidden; /* Prevent scrollbars from gradients/image */
+    position: relative; /* Context for potential absolute elements if needed */
+    background-color: #fff; /* Fallback background */
+    padding: 0 !important; /* Override any section padding */
+}
+
+/* Left Text Column Styling */
+.hero-text-col {
+    background: linear-gradient(135deg, #e0f7fa 0%, #ffffff 60%, #fff8e1 100%); /* Example gradient */
+    padding: 0; /* Padding handled internally */
+    position: relative; /* For header positioning if needed */
+}
+
+#header-content {
+    /* Styles for the logo container */
+    z-index: 10; /* Keep logo above gradient */
+}
+#header-content .logo a {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--dark-color);
+    letter-spacing: 1px;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+}
+#header-content .logo a span {
+    color: var(--primary-color); /* Your accent color */
+}
+
+
+.hero-text-content {
+    /* This div handles the main text centering */
+    text-align: center; /* ADD THIS LINE */
+}
+
+/* You might want to adjust max-width on subtitle if centered */
+.hero-text-content p.hero-subtitle {
+    font-family: 'Poppins', sans-serif;
+    color: var(--secondary-dark);
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    margin-bottom: 30px;
+    max-width: 450px; /* Limit width of subtitle */
+    margin-left: auto;  /* Add this for centering the paragraph */
+    margin-right: auto; /* Add this for centering the paragraph */
+}
+
+.hero-text-content h1.hero-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(3.5rem, 8vw, 6rem); /* Responsive font size */
+    font-weight: 700;
+    color: var(--dark-color);
+    line-height: 1.1;
+    margin-bottom: 20px;
+    position: relative; /* For pseudo-elements like the squiggle if desired */
+}
+/* Optional: Add squiggle effect like example */
+/* .hero-text-content h1.hero-name::after {
+    content: ''; // Use SVG or background image for squiggle
+    position: absolute;
+    top: 5px;
+    right: -10px;
+    width: 40px;
+    height: 40px;
+    background: url('path/to/squiggle.svg') no-repeat center center / contain;
+} */
+
+.hero-text-content p.hero-subtitle {
+    font-family: 'Poppins', sans-serif;
+    color: var(--secondary-dark);
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    margin-bottom: 30px;
+    max-width: 450px; /* Limit width of subtitle */
+}
+
+
+
+
+
+.hero-text-content .btn-hero {
+    display: inline-block;
+    background-color: var(--primary-color); /* <<< Use theme primary color */
+    color: var(--white-color);
+    padding: 12px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+    border: none; /* Or add a border if you prefer: border: 1px solid var(--primary-color); */
+}
+.hero-text-content .btn-hero:hover {
+    background-color: #089a95; /* <<< Use darker shade for hover */
+    color: var(--white-color);
+     /* border-color: #089a95; /* Optional: Match border color on hover */
+}
+
+
+/* Right Image Column Styling */
+.hero-img-col {
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('./hero.png'); /* Add your image path + overlay */
+    /* background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://via.placeholder.com/800x1200/555555/ffffff?text=Your+Full+Height+Photo'); Placeholder */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Navigation within Image Column */
+#hero-nav {
+    /* Basic nav styling */
+     z-index: 10;
+}
+#hero-nav .nav-link {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.5rem 0; /* Adjust padding */
+    margin: 0 0.5rem; /* Spacing between links */
+    transition: color 0.3s ease;
+    position: relative;
+}
+#hero-nav .nav-link:hover,
+#hero-nav .nav-link.active {
+    color: #ffffff;
+}
+/* Underline effect for active/hover */
+/* Navigation within Image Column */
+#hero-nav {
+    /* Basic nav styling */
+     z-index: 10;
+}
+#hero-nav .nav-link {
+    color: rgba(255, 255, 255, 0.8); /* Slightly increased opacity for better visibility */
+    font-size: 0.9rem;
+    font-weight: 500;
+    /* Adjust padding for button look */
+    padding: 0.4rem 1rem; /* Reduced vertical, increased horizontal */
+    margin: 0 0.3rem; /* Adjust spacing between links */
+    transition: all 0.3s ease; /* Transition color and background */
+    position: relative; /* Keep relative positioning if needed for other things */
+    border-radius: 50px; /* Add rounded corners like your theme buttons */
+    border: 1px solid transparent; /* Add transparent border to prevent jump on hover */
+}
+
+#hero-nav .nav-link:hover,
+#hero-nav .nav-link.active {
+    color: var(--white-color); /* White text */
+    background-color: var(--primary-color); /* Use theme's primary color for background */
+    /* Optional: Add a subtle border if you like */
+    /* border: 1px solid var(--primary-color); */
+}
+
+/* --- REMOVE OR COMMENT OUT THE ::after rules shown in Step 1 --- */
+/* #hero-nav .nav-link::after { ... } */
+/* #hero-nav .nav-link:hover::after, */
+/* #hero-nav .nav-link.active::after { ... } */
+
+
+/* Social Icons within Image Column */
+.hero-social-icons {
+    right: 30px;
+    bottom: 30px; /* Position bottom right */
+    z-index: 10;
+}
+.hero-social-icons a {
+    display: block; /* Stack vertically */
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1rem;
+    margin-bottom: 15px; /* Space between icons */
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+.hero-social-icons a:hover {
+    color: #ffffff;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 991px) {
+    #hero {
+        height: auto; /* Allow height to adjust */
+        min-height: 60vh; /* Still give some minimum height */
+    }
+    .hero-text-col {
+        
+        min-height: 60vh; /* Ensure text column has height */
+        padding: 60px 0; /* Add vertical padding */
+    }
+    #header-content {
+        padding-left: 15px; /* Adjust padding */
+    }
+    .hero-text-content {
+         padding-left: 15px;
+         padding-right: 15px;
+         align-items: center; /* Center text content horizontally */
+         text-align: center;
+    }
+     .hero-text-content h1.hero-name {
+         font-size: clamp(3rem, 10vw, 4.5rem); /* Adjust font size */
+     }
+     .hero-text-content p.hero-subtitle {
+          font-size: clamp(0.9rem, 2vw, 1.1rem);
+          max-width: 90%;
+     }
+
+     /* Hide the nav that was inside the image column */
+     #hero-nav { display: none; }
+     /* You might want a separate mobile nav toggler now if needed */
+}
+
+/* --- End Hero Section CSS --- */
+
+/* --- Reset/Adjust original Navbar styles --- */
+/* Ensure previous mobile nav styles are removed or adapted */
+.mobile-nav-toggle { /* Hide the old toggler if not needed */
+    display: none !important;
+}
+body.mobile-nav-active::before { /* Remove overlay if not used */
+    display: none;
+}
+
+/* --- Adjust Main Content Margins/Padding --- */
+/* Add top padding to the first section after hero if needed */
+#main > section:first-of-type {
+    padding-top: var(--section-padding); /* Or a specific value */
+}
+
+/* --- About Section - New Styles --- */
+#about {
+    background-color: var(--white-color); /* Or a very light background if needed */
+    padding: 80px 0; /* Adjust padding as needed */
+}
+
+.about-img-wrapper {
+    min-height: 400px; /* Ensure it has some height, especially on mobile */
+}
+
+/* --- Background Shapes --- */
+.about-shape {
+    position: absolute;
+    border-radius: 15px; /* Rounded corners for shapes */
+    z-index: 1; /* Behind the main image */
+    opacity: 0.9; /* Slight transparency if desired */
+}
+
+.about-shape-1 { /* Lighter Teal/Blue Shape */
+    background-color: #e0f7fa; /* Example light teal */
+    width: 80%;
+    height: 85%;
+    top: 0;
+    left: 0;
+    transform: rotate(-8deg); /* Slight rotation */
+}
+
+.about-shape-2 { /* Green Shape */
+    background-color: #089a95;; /* Example green color */
+    width: 75%;
+    height: 70%;
+    bottom: 0;
+    left: 10%; /* Offset from left */
+     transform: rotate(5deg); /* Slight rotation */
+}
+
+/* --- Main Image --- */
+.about-main-img {
+    position: relative; /* Use relative to stack above absolute shapes */
+    z-index: 2; /* Make sure image is on top */
+    border-radius: 15px; /* Rounded corners for image */
+    max-width: 85%; /* Control image size relative to column */
+    display: block; /* Helps with margin auto */
+    margin: 5% auto 0; /* Center horizontally, push down slightly */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+}
+
+/* --- Text Content Styling --- */
+#about .content {
+    /* Padding is handled by ps-lg-5 on the column */
+}
+
+.about-intro {
+    color: #089a95; /* Green color for "About Me" */
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.about-title {
+    font-size: clamp(2.2rem, 5vw, 3rem); /* Responsive font size */
+    font-weight: 700;
+    color: var(--dark-color);
+    margin-bottom: 20px;
+    line-height: 1.2;
+    position: relative; /* For squiggle positioning */
+}
+
+/* --- Optional Squiggle --- */
+.title-squiggle {
+     display: inline-block; /* Or block */
+     width: 30px; /* Adjust size */
+     height: 20px; /* Adjust size */
+     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 50'%3E%3Cpath d='M0,25 Q25,0 50,25 T100,25' fill='none' stroke='%238BC34A' stroke-width='5'/%3E%3C/svg%3E"); /* Basic SVG squiggle (URL encoded green #8BC34A) */
+     background-repeat: no-repeat;
+     background-size: contain;
+     position: absolute; /* Position relative to title */
+     top: -5px; /* Adjust position */
+     right: 10px; /* Adjust position */
+     transform: rotate(10deg); /* Optional rotation */
+ }
+
+
+#about .content p {
+    margin-bottom: 15px;
+}
+
+/* --- Details List --- */
+
+
+/* --- Signature --- */
+.about-signature {
+    max-width: 180px; /* Control signature size */
+    height: auto;
+    opacity: 0.8; /* Make it slightly subtle */
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 991px) {
+    .about-img-wrapper {
+        margin-bottom: 40px; /* Add space below image stack on mobile */
+        min-height: 450px; /* Adjust min-height */
+    }
+     .about-main-img {
+         max-width: 75%; /* Maybe slightly smaller on mobile */
+         margin-top: 8%;
+     }
+     .about-shape-1 { width: 75%; height: 80%; }
+     .about-shape-2 { width: 70%; height: 65%; left: 5%; }
+
+    #about .content {
+        padding-left: 15px; /* Reset padding if needed */
+        text-align: center; /* Center text on mobile maybe? */
+    }
+
+     .signature-area { text-align: center; } /* Center signature */
+     .title-squiggle { /* Adjust squiggle position for centered text */
+        right: 50%;
+        transform: translateX(150%) rotate(10deg); /* Re-center roughly */
+        top: -15px;
+     }
+}
+
+@media (max-width: 767px) {
+    .about-main-img { max-width: 80%; }
+     .about-shape-1, .about-shape-2 { /* Make shapes simpler maybe */
+         transform: rotate(0);
+     }
+      .about-shape-1 { width: 80%; height: 80%; left: 5%; }
+     .about-shape-2 { width: 70%; height: 70%; left: 15%; bottom: 5%;}
+}
+
+/* --- Remove or Adjust Old About Styles --- */
+/* Comment out or delete the previous #about rules if they conflict */
+/* #about .content h3 { ... } */
+/* #about .content ul { ... } etc. */
+
+        /* --- Services Section --- */
+        #services {
+            background-color: var(--light-color);
+        }
+        .service-item {
+            background-color: var(--white-color);
+            padding: 40px 30px;
+            text-align: center;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: all var(--transition-speed);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: 100%; /* Make items in a row equal height */
+             margin-bottom: 30px; /* Add space between rows on mobile */
+        }
+        .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-color: var(--primary-color);
+        }
+        .service-item .icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: inline-block;
+            transition: transform var(--transition-speed);
+        }
+        .service-item:hover .icon {
+             transform: scale(1.1);
+        }
+        .service-item h4 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+         .service-item h4 a {
+             color: var(--dark-color);
+         }
+         .service-item h4 a:hover {
+             color: var(--primary-color);
+         }
+        .service-item p {
+            color: var(--grey-color);
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        /* --- Portfolio Section --- */
+        #portfolio #portfolio-flters {
+            padding: 0;
+            margin: 0 auto 25px auto;
+            list-style: none;
+            text-align: center;
+        }
+
+        #portfolio #portfolio-flters li {
+            cursor: pointer;
+            display: inline-block;
+            padding: 10px 18px;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1;
+            text-transform: uppercase;
+            color: #444444;
+            margin-bottom: 5px;
+            transition: all 0.3s ease-in-out;
+            border-radius: 50px;
+            font-family: "Poppins", sans-serif;
+        }
+
+        #portfolio #portfolio-flters li:hover,
+        #portfolio #portfolio-flters li.filter-active {
+            color: #fff;
+            background: var(--primary-color);
+        }
+
+        .portfolio-item {
+            margin-bottom: 30px; /* Gutter replacement */
+            overflow: hidden;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .portfolio-item img {
+             transition: transform 0.5s ease;
+        }
+
+        .portfolio-item .portfolio-info {
+            opacity: 0;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            z-index: 3;
+            right: 0;
+            transition: all ease-in-out 0.3s;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            color: var(--white-color);
+        }
+
+        .portfolio-item .portfolio-info h4 {
+            font-size: 1.1rem;
+            color: var(--white-color);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .portfolio-item .portfolio-info p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9em;
+            margin-bottom: 0;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+        .portfolio-item:hover .portfolio-info {
+            opacity: 1;
+        }
+
+        /* Isotope transition */
+        .portfolio-container {
+            transition: height .4s ease-out !important;
+        }
+
+
+        /* --- Testimonials Section --- */
+        #testimonials {
+            background: var(--light-color);
+        }
+
+        .testimonial-item {
+            box-sizing: content-box;
+            padding: 30px;
+            margin: 15px; /* Spacing between items in carousel view */
+            min-height: 200px; /* Adjust as needed */
+            background: #fff;
+            box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
+            position: relative;
+            border-radius: 8px;
+            border-left: 5px solid var(--primary-color);
+        }
+        .testimonial-item p.quote {
+            font-style: italic;
+            margin: 0 0 20px 0;
+            padding: 0;
+            position: relative;
+            padding-left: 25px; /* Space for quote icon */
+        }
+        .testimonial-item p.quote::before {
+            content: "\f10d"; /* FontAwesome quote left */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            position: absolute;
+            left: -5px;
+            top: -5px;
+            opacity: 0.6;
+        }
+
+        .testimonial-item .author {
+            text-align: right;
+        }
+
+         .testimonial-item .author h4 {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin: 0 0 5px 0;
+            color: var(--dark-color);
+        }
+
+        .testimonial-item .author span {
+            font-size: 0.9rem;
+            color: var(--grey-color);
+        }
+
+        /* Owl Carousel Dots */
+        .owl-carousel .owl-dots {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .owl-carousel .owl-dot {
+            display: inline-block;
+            margin: 0 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ddd !important; /* Override default */
+            transition: background-color 0.3s ease;
+        }
+
+        .owl-carousel .owl-dot.active {
+            background-color: var(--primary-color) !important; /* Override default */
+        }
+
+      
+
+        /* --- Blog Section --- */
+         #blog {
+            background-color: var(--light-color);
+        }
+        .blog-post {
+            margin-bottom: 30px; /* Gutter replacement */
+            box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+            overflow:hidden;
+            background: var(--white-color);
+             transition: transform 0.3s ease;
+        }
+         .blog-post:hover {
+             transform: translateY(-5px);
+        }
+        .blog-post img {
+             max-width: 100%;
+             height: auto;
+        }
+        .blog-post .post-content {
+            padding: 25px;
+        }
+        .blog-post .post-meta {
+            font-size: 0.85rem;
+            color: var(--grey-color);
+            margin-bottom: 10px;
+        }
+        .blog-post .post-meta span {
+            margin-right: 15px;
+        }
+        .blog-post .post-meta i {
+            margin-right: 5px;
+            color: var(--primary-color);
+        }
+        .blog-post h3.post-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .blog-post h3.post-title a {
+            color: var(--dark-color);
+            transition: color var(--transition-speed);
+        }
+         .blog-post h3.post-title a:hover {
+            color: var(--primary-color);
+         }
+        .blog-post p {
+            font-size: 0.95rem;
+            color: var(--secondary-dark);
+            margin-bottom: 20px;
+        }
+        .blog-post .read-more a {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+             transition: color var(--transition-speed);
+        }
+        .blog-post .read-more a:hover {
+            color: var(--dark-color);
+            text-decoration: underline;
+        }
+        .blog-post .read-more i {
+             margin-left: 5px;
+             font-size: 0.8em;
+        }
+
+        /* --- Contact Section --- */
+        .contact .info-box {
+            color: #444444;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(214, 215, 216, 0.4);
+            padding: 20px 0 30px 0;
+            margin-bottom: 30px; /* Space below boxes */
+            border-radius: 8px;
+             background: var(--white-color);
+             display: flex; /* Use flex for vertical alignment */
+             flex-direction: column;
+             justify-content: center;
+             align-items: center;
+             height: 100%; /* Equal height */
+        }
+
+        .contact .info-box i {
+            font-size: 32px;
+            color: var(--primary-color);
+            border-radius: 50%;
+            padding: 8px;
+            /* border: 2px dotted #f0f0f0; */ /* Alternative style */
+            width: 60px;
+            height: 60px;
+            line-height: 44px; /* Adjust for vertical center */
+            margin-bottom: 15px;
+        }
+
+        .contact .info-box h3 {
+            font-size: 1.2rem;
+            color: #666666;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        .contact .info-box p {
+            padding: 0;
+            line-height: 1.5;
+            font-size: 14px;
+            margin-bottom: 0;
+            color: var(--secondary-dark);
+        }
+
+        .contact .php-email-form {
+            box-shadow: 0 0 30px rgba(214, 215, 216, 0.4);
+            padding: 30px;
+            border-radius: 8px;
+             background: var(--white-color);
+             height: 100%; /* Equal height with info boxes */
+        }
+
+        .contact .php-email-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .contact .php-email-form input,
+        .contact .php-email-form textarea {
+            border-radius: 4px;
+            box-shadow: none;
+            font-size: 14px;
+             border: 1px solid #ced4da; /* Bootstrap default */
+        }
+         .contact .php-email-form input:focus,
+         .contact .php-email-form textarea:focus {
+              border-color: var(--primary-color);
+              box-shadow: 0 0 0 0.2rem rgba(10, 186, 181, 0.25); /* Primary color focus */
+         }
+
+
+        .contact .php-email-form button[type="submit"] {
+            /* Uses .btn-primary */
+        }
+
+        /* --- Footer --- */
+        #footer {
+            background: var(--dark-color);
+            padding: 30px 0;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            text-align: center;
+        }
+
+        #footer .copyright strong {
+            color: var(--white-color);
+        }
+
+        #footer .credits {
+            padding-top: 5px;
+            font-size: 13px;
+        }
+
+        #footer .credits a {
+            color: var(--primary-color);
+            transition: 0.3s;
+        }
+        #footer .credits a:hover {
+             color: var(--white-color);
+        }
+
+        /* --- Scroll-to-Top Button --- */
+        .scroll-to-top {
+            position: fixed;
+            visibility: hidden; /* Use visibility for transitions */
+            opacity: 0;
+            right: 15px;
+            bottom: 15px;
+            z-index: 996;
+            background: var(--primary-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transition: all 0.4s;
+        }
+
+        .scroll-to-top i {
+            font-size: 24px;
+            color: #fff;
+            line-height: 0; /* Helps center icon */
+            position: absolute; /* Center icon */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .scroll-to-top:hover {
+            background: #0caaa4; /* Slightly different hover */
+            color: #fff;
+        }
+
+        .scroll-to-top.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+    </style>
+</head>
+
+<body>
+    <section id="hero" class="vh-100"> 
+        <div class="container-fluid h-100"> 
+            <div class="row h-100">
+    
+                <!-- Left Text Column -->
+                <div class="col-lg-6 hero-text-col d-flex flex-column h-100">
+    
+                    <!-- Header Content (Logo) -->
+                    <div id="header-content" class="pt-4 ps-4 ps-lg-5">
+                         <div class="logo">
+                            <!-- Use your name again -->
+                            <a href="index.html">Port<span>Folio</span></a>
+                        </div>
+                    </div>
+    
+                    <!-- Main Hero Text Content -->
+                    <div class="hero-text-content flex-grow-1 d-flex flex-column justify-content-center ps-4 ps-lg-5 pe-4 pe-lg-5">
+                        <h1 class="hero-name">Ammar<br>Ahmed</h1>
+                        <p class="hero-subtitle">Data Scientist & ML Engineer leveraging expertise to build impactful solutions.</p>
+                        <div>
+                            <a href="#contact" class="btn btn-hero scrollto">Say Hello</a> 
+                        </div>
+                    </div>
+    
+                </div>
+                <!-- End Left Text Column -->
+    
+                <!-- Right Image Column -->
+                <div class="col-lg-6 hero-img-col d-none d-lg-flex flex-column h-100 p-0 position-relative"> {
+    
+                    <!-- Navigation inside Image Col -->
+                    <nav id="hero-nav" class="navbar navbar-dark ms-auto p-4">
+                        <ul class="navbar-nav flex-row">
+                            <li class="nav-item px-2"><a class="nav-link scrollto active" href="#hero">Home</a></li>
+                            <li class="nav-item px-2"><a class="nav-link scrollto" href="#about">About</a></li>
+                            <li class="nav-item px-2"><a class="nav-link scrollto" href="#skills">Skills</a></li>
+                            <li class="nav-item px-2"><a class="nav-link scrollto" href="#projects">Projects</a></li>
+                            <li class="nav-item px-2"><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                        </ul>
+                    </nav>
+    
+                    <!-- Social Icons inside Image Col -->
+                    <div class="hero-social-icons position-absolute">
+                        <a href="" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/mammarahmed/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a> 
+                        <a href="muh.ammar.ahmed@gmail.com"><i class="fas fa-envelope"></i></a> 
+                    </div>
+    
+                </div>
+                <!-- End Right Image Column -->
+    
+            </div>
+        </div>
+    </section><!-- End Hero -->
+
+    <main id="main">
+
+ <!-- ======= About Section ======= -->
+<section id="about" class="about">
+    <div class="container">
+
+        <div class="row align-items-center gy-5 gy-lg-0"> 
+
+            <!-- Image Column (with Shapes) -->
+            <div class="col-lg-6 order-lg-1 about-img-wrapper position-relative">
+                <div class="about-shape about-shape-1"></div>
+                <div class="about-shape about-shape-2"></div>
+
+                <img src="./about2.jpg" class="img-fluid about-main-img" alt="About Ammar Ahmed">
+
+            </div>
+            <!-- End Image Column -->
+
+            <!-- Text Content Column -->
+            <div class="col-lg-6 order-lg-2 content ps-lg-5">
+                <p class="about-intro">About Me</p>
+                <h2 class="about-title">
+                    I Develop ML Systems<br>that Work
+                    <span class="title-squiggle"></span>
+                </h2>
+
+                <p class="fst-italic">
+                    I’m an experienced Machine Learning and AI specialist with a track record of delivering impactful data solutions 
+                    at Tesla, Bosch, Siemens, and IBM. </p>
+                <p>
+                    From deep learning to NLP, I help businesses leverage AI for automation, optimization, and decision-making. Let’s build something intelligent together!                
+                </p>
+
+
+
+
+                <!-- <a href="#" class="btn btn-outline-primary mt-3">Learn More</a> -->
+            </div>
+            <!-- End Text Content Column -->
+
+        </div>
+
+    </div>
+</section><!-- End About Section -->
+
+<!-- ======= Services Section ======= -->
+<section id="services" class="services">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Services</h2>
+            <p>Leveraging data science and machine learning expertise to build impactful solutions and drive data-driven decisions.</p>
+        </div>
+
+        <div class="row gy-4"> 
+
+            <div class="col-lg-4 col-md-6">
+                <div class="service-item">
+                    <div class="icon"><i class="fas fa-brain"></i></div>
+                    <h4><a href="#">Data Science & Machine Learning</a></h4>
+                    <p>Building custom models for prediction, classification, clustering, and anomaly detection to solve complex business problems.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                 <div class="service-item">
+                    <div class="icon"><i class="fas fa-project-diagram"></i></div>
+                    <h4><a href="#">Deep Learning Solutions</a></h4>
+                    <p>Implementing advanced Deep Learning models (LLMs, VisionTransformers) for tasks like forecasting, computer vision, and sequence analysis.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="service-item">
+                    <div class="icon"><i class="fas fa-cogs"></i></div>
+                    <h4><a href="#">Data Engineering & Automation</a></h4>
+                    <p>Designing and automating robust data pipelines for ETL processes, data warehousing, and efficient data handling across various systems.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="service-item">
+                    <div class="icon"><i class="fas fa-language"></i></div> 
+                    <h4><a href="#">Natural Language Processing (NLP)</a></h4>
+                    <p>Applying NLP techniques including Topic Modeling, Named Entity Recognition, Semantic Similarity, and leveraging LLMs for text analysis and automation.</p>
+                </div>
+            </div>
+
+             <div class="col-lg-4 col-md-6">
+                 <div class="service-item">
+                    <div class="icon"><i class="fas fa-chart-line"></i></div> 
+                    <h4><a href="#">Data Analysis & Visualization</a></h4>
+                    <p>Performing exploratory data analysis, creating insightful dashboards, and communicating findings to support data-driven decision-making.</p>
+                </div>
+            </div>
+
+             <div class="col-lg-4 col-md-6">
+                 <div class="service-item">
+                    <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div> 
+                    <h4><a href="#">MLOps & Cloud Deployment</a></h4>
+                    <p>Deploying, monitoring, and managing scalable machine learning systems on cloud platforms like AWS.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section><!-- End Services Section -->
+
+        <!-- ======= Portfolio Section ======= -->
+        <section id="portfolio" class="portfolio">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>Portfolio</h2>
+                    <p>Explore a selection of projects where I've applied data science, machine learning, and engineering techniques to deliver tangible results. These examples highlight my experience in areas such as predictive modeling, NLP, process automation, and cloud solutions, showcasing my ability to transform data into actionable insights and robust systems.</p>                </div>
+
+                    <div class="row">
+                        <div class="col-lg-12 d-flex justify-content-center">
+                            <ul id="portfolio-flters">
+                                <li data-filter="*" class="filter-active">All</li>
+                                <li data-filter=".filter-ml">ML/DL</li> 
+                                <li data-filter=".filter-nlp">NLP</li> 
+                                <li data-filter=".filter-data-eng">Data Engineering</li> 
+                                <li data-filter=".filter-cloud">Cloud</li> 
+                                <li data-filter=".filter-analytics">Analytics</li> 
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row portfolio-container">
+
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-ml">
+                            <img src="./esaam.png" class="img-fluid" alt="Forecasting Model"> 
+                            <div class="portfolio-info">
+                                <h4>Sales Forecasting Model</h4> 
+                                <p>Deep Learning (RNN/GRU) on Azure</p> 
+                            </div>
+                        </div>
+            
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-data-eng">
+                            <img src="./esaam.png" class="img-fluid" alt="Automated Data Pipeline">
+                            <div class="portfolio-info">
+                                <h4>Automated Data Pipeline</h4>
+                                <p>Using Airflow for ETL & processing</p>
+                            </div>
+                        </div>
+            
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-nlp">
+                            <img src="./esaam.png" class="img-fluid" alt="NLP Ticket System">
+                            <div class="portfolio-info">
+                                <h4>Ticket Prioritization System</h4>
+                                <p>Topic Modeling & LLM implementation</p>
+                            </div>
+                        </div>
+            
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-cloud">
+                            <img src="./esaam.png" class="img-fluid" alt="AWS System Migration">
+                            <div class="portfolio-info">
+                                <h4>Procurement System Migration</h4>
+                                <p>Leveraging AWS S3, EC2, Lambda</p>
+                            </div>
+                        </div>
+            
+                         <div class="col-lg-4 col-md-6 portfolio-item filter-analytics">
+                            <img src="./esaam.png" class="img-fluid" alt="Workforce Dashboard">
+                            <div class="portfolio-info">
+                                <h4>Workforce Planning Dashboard</h4>
+                                <p>Tableau visualization for decision support</p>
+                            </div>
+                        </div>
+            
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-ml">
+                            <img src="./esaam.png" class="img-fluid" alt="Anomaly Detection">
+                            <div class="portfolio-info">
+                                <h4>Server Anomaly Detection</h4>
+                                <p>ML model using telemetry data</p>
+                            </div>
+                        </div>
+            
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-nlp">
+                             <img src="./esaam.png" class="img-fluid" alt="Named Entity Recognition">
+                            <div class="portfolio-info">
+                                <h4>Log Information Extraction</h4>
+                                <p>Named Entity Recognition using spaCy</p>
+                            </div>
+                        </div>
+            
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-ml">
+                            <img src="./esaam.png" class="img-fluid" alt="Data Drift Detection">
+                            <div class="portfolio-info">
+                                <h4>Data Drift Detection System</h4>
+                                <p>MLOps techniques using Pytorch</p>
+                            </div>
+                        </div>
+            
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-ml">
+                            <img src="./esaam.png" class="img-fluid" alt="Computer Vision Project">
+                            <div class="portfolio-info">
+                                <h4>Radar Object Classification</h4>
+                                <p>Unsupervised Domain Adaptation (CV)</p>
+                            </div>
+                        </div>
+            
+            
+                    </div>
+
+            </div>
+        </section><!-- End Portfolio Section -->
+
+         <!-- ======= Testimonials Section ======= -->
+        <section id="testimonials" class="testimonials">
+          <div class="container">
+
+            <div class="section-title">
+              <h2>Testimonials</h2>
+              <p>What they are saying about us.</p>
+            </div>
+
+            <div class="owl-carousel owl-theme testimonials-carousel">
+
+
+
+                 <div class="testimonial-item">
+                    <p class="quote">
+                        Throughout our time together, Muhammad consistently impressed me with his technical skills, problem-solving abilities, and collaborative spirit. He is a highly motivated and results-oriented individual who consistently delivers high-quality work.</p>
+                    <div class="author">
+                        <h4>Raimar Kuehn</h4>
+                        <span>Manager, Google</span>
+                    </div>
+                </div><!-- End testimonial item -->
+
+                <div class="testimonial-item">
+                    <p class="quote">
+                        As Ammar's functional manager at IBM, I found Ammar ambitious, clear and proactive in his approach ato acquiring and applying Data Science skillset in his work. He invested in his learning along side his project activities and contributed immensely</p>
+                    <div class="author">
+                        <h4>Sidra Ashraf</h4>
+                        <span>GTM Leader, IBM</span>
+                    </div>
+                </div><!-- End testimonial item -->
+
+                 <div class="testimonial-item">
+                    <p class="quote">
+                        I have known Ammar for the last 2.5 years as he has been part of my team in multiple projects when he was working as Data Scientist in IBM. He is a reliable, dependable and industrious resource who has the strong ability to work under pressure                     </p>
+                    <div class="author">
+                        <h4>Madiha Ijaz</h4>
+                        <span>Senior Leader, IBM</span>
+                    </div>
+                </div><!-- End testimonial item -->
+                <div class="testimonial-item">
+                    <p class="quote">
+                        Muhammad delivered the project on time and on budget. Looking forward to working with him again.
+                    </p>
+                    <div class="author">
+                        <!-- <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt=""> -->
+                        <h4>Josh Heslin</h4>
+                        <span>Ceo, Cloutly</span>
+                    </div>
+                </div><!-- End testimonial item -->
+
+            </div><!-- End Owl Carousel -->
+
+          </div>
+        </section><!-- End Testimonials Section -->
+
+
+        <!-- ======= Blog Section ======= -->
+        <section id="blog" class="blog">
+          <div class="container">
+
+            <div class="section-title">
+              <h2>Recent Blog Posts</h2>
+              <p>Read the latest news from our blog. Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem.</p>
+            </div>
+
+            <div class="row gy-4"> <!-- {/* Add gy-4 */} -->
+
+              <div class="col-lg-4 col-md-6">
+                  <article class="blog-post">
+                    <div class="post-img">
+                        <img src="./esaam.png" alt="" class="img-fluid">
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="far fa-user"></i> John Doe</span>
+                            <span><i class="far fa-calendar-alt"></i> Jan 1, 2023</span>
+                            <!-- <span><i class="far fa-comments"></i> 12 Comments</span> -->
+                        </div>
+                        <h3 class="post-title"><a href="#">Dolorum optio tempore voluptas dignissimos</a></h3>
+                        <p>
+                            Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium...
+                        </p>
+                        <div class="read-more">
+                            <a href="#">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                 </article>
+              </div><!-- End blog post item -->
+
+               <div class="col-lg-4 col-md-6">
+                  <article class="blog-post">
+                    <div class="post-img">
+                        <img src="./esaam.png" alt="" class="img-fluid">
+                    </div>
+                     <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="far fa-user"></i> Jane Smith</span>
+                            <span><i class="far fa-calendar-alt"></i> Feb 15, 2023</span>
+                        </div>
+                        <h3 class="post-title"><a href="#">Nisi magni odit consequatur autem nulla dolorem</a></h3>
+                        <p>
+                            Incidunt voluptate sit temporibus aperiam. Quia vitae aut sint ullam quis illum voluptatum...
+                        </p>
+                         <div class="read-more">
+                            <a href="#">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                 </article>
+              </div><!-- End blog post item -->
+
+               <div class="col-lg-4 col-md-6">
+                   <article class="blog-post">
+                    <div class="post-img">
+                        <img src="./esaam.png" alt="" class="img-fluid">
+                    </div>
+                     <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="far fa-user"></i> Admin</span>
+                            <span><i class="far fa-calendar-alt"></i> Mar 22, 2023</span>
+                        </div>
+                        <h3 class="post-title"><a href="#">Possimus soluta ut id suscipit ea ut. In quo quia et soluta libero</a></h3>
+                        <p>
+                            Aut iste neque ut illum qui perspiciatis similique recusandae non. Fugit autem dolorem...
+                        </p>
+                         <div class="read-more">
+                            <a href="#">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                 </article>
+              </div><!-- End blog post item -->
+
+            </div><!-- End blog posts list -->
+
+          </div>
+        </section><!-- End Blog Section -->
+
+        <!-- ======= Contact Section ======= -->
+        <section id="contact" class="contact">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>Contact Us</h2>
+                    <p>Get in touch with me. </p>
+                </div>
+
+                <div class="row gy-4"> <!--{/* Add gy-4 */} -->
+                    <div class="col-lg-4">
+                        <div class="row gy-4"> <!-- {/* Nested row for info boxes */} -->
+                            <div class="col-md-6 col-lg-12">
+                                <div class="info-box">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <h3>Address</h3>
+                                    <p>Berlin, BER Germany</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-12">
+                                <div class="info-box">
+                                    <i class="far fa-envelope"></i>
+                                    <h3>Email Us</h3>
+                                    <p>muh.ammar.ahmed@gmail.com</p>
+                                </div>
+                            </div>
+                             <div class="col-md-6 col-lg-12">
+                                <div class="info-box">
+                                    <i class="fas fa-phone"></i>
+                                    <h3>Contact</h3>
+                                    <p>+491773830455<br>+923363733781</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <form action="#" method="post" role="form" class="php-email-form"> <!--{/* Replace # with your endpoint */} -->
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                                </div>
+                                <div class="col-md-6 form-group mt-3 mt-md-0">
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                            </div>
+                            <div class="form-group mt-3">
+                                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                            </div>
+                            <!-- Add Validation/Messages/Loading state elements if needed -->
+                            <div class="my-3">
+                                <!-- <div class="loading">Loading</div>
+                                <div class="error-message"></div>
+                                <div class="sent-message">Your message has been sent. Thank you!</div> -->
+                            </div>
+                            <div class="text-center"><button type="submit" class="btn btn-primary">Send Message</button></div>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Contact Section -->
+
+    </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container">
+            <div class="copyright">
+                &copy; Copyright <strong><span>Ammar</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+
+    <!-- Scroll-to-Top Button -->
+    <a href="#" class="scroll-to-top d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></a>
+
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <!-- Owl Carousel JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Isotope JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha512-Zq2BOxyhvnRFXu0+WE6ojpZLOU2jdnqbrM1hmVdGzyeCa1DgM3X5Q4A/Is9xA1IkbUeDd7755dNNI/PzSf2Pew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Custom JS -->
+    // Custom JS
+    <script>
+        jQuery(document).ready(function($) { // <<< Runs when DOM is ready
+            "use strict";
+
+            // --- Sticky Header ---
+            // ... (keep sticky header code) ...
+
+            // --- Mobile Nav Toggle Body Class ---
+            // ... (keep mobile nav code) ...
+
+            // --- Close mobile nav on link click ---
+            // ... (keep close nav code) ...
+
+            // --- Smooth Scroll for links with .scrollto class ---
+            // ... (keep smooth scroll code) ...
+
+            // --- Activate scrollspy to add active class to navbar items on scroll ---
+            // ... (keep scrollspy code) ...
+
+            // --- Scroll-to-Top Button ---
+            // ... (keep scroll-to-top code) ...
+
+            // --- Owl Carousel for Testimonials ---
+            $('.testimonials-carousel').owlCarousel({
+                loop: true,
+                margin: 30,
+                autoplay: true,
+                autoplayTimeout: 5000,
+                autoplayHoverPause:true,
+                dots: true,
+                responsive: { 0: { items: 1 }, 768: { items: 2 }, 992: { items: 3 } }
+            });
+            
+
+            // --- Isotope Portfolio Filtering ---
+            var portfolioContainer = $('.portfolio-container');
+            var portfolioIsotope; // Declare here to be accessible later
+
+            if (portfolioContainer.length) {
+                // Initialize Isotope directly within document.ready
+                // For 'fitRows', waiting for images is less critical than for 'masonry'
+                portfolioIsotope = portfolioContainer.isotope({
+                    itemSelector: '.portfolio-item',
+                    layoutMode: 'fitRows' // or 'masonry'
+                });
+
+                 // If using 'masonry' layout, it's still better to use imagesLoaded
+                 // to relayout after images load, even if initialized early:
+                 /*
+                 portfolioContainer.imagesLoaded( function() {
+                   portfolioIsotope.isotope('layout');
+                 });
+                 */
+
+                // Attach click handler *after* initialization attempt
+                $('#portfolio-flters li').on('click', function() {
+                    $("#portfolio-flters li").removeClass('filter-active');
+                    $(this).addClass('filter-active');
+
+                    // Check if portfolioIsotope was successfully initialized before using
+                    if (portfolioIsotope) {
+                        portfolioIsotope.isotope({
+                            filter: $(this).data('filter')
+                        });
+                         console.log('Filtering by:', $(this).data('filter')); // Debug log
+                    } else {
+                        console.error("Isotope not initialized yet."); // Debug log
+                    }
+                });
+            }
+
+             // Optional: Trigger layout again on window load just in case
+             $(window).on('load', function() {
+                if (portfolioIsotope) {
+                    portfolioIsotope.isotope('layout');
+                }
+             });
+
+
+        }); // <<< END of document.ready
+    </script>
+
+</body>
+</html>
