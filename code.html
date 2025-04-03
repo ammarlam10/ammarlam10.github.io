@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thames Replica (with Libraries)</title>
+    <title>Ammar Ahmed</title>
 
     <!-- Favicon (Optional - Add your own) -->
     <!-- <link href="assets/img/favicon.png" rel="icon"> -->
@@ -247,81 +247,381 @@
              }
          }
 
-        /* --- Hero Section --- */
-        #hero {
-            width: 100%;
-            min-height: 150vh; /* Use min-height for flexibility */
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/home/ammar/Desktop/1.webp') center center;
-            background-size: cover;
-            position: relative;
-            display: flex; /* Use flexbox for centering */
-            align-items: center;
-            justify-content: center;
-            padding: 0; /* Remove section padding */
-            color: var(--white-color);
-        }
+/* --- Remove Base Header Styling --- */
+/* Comment out or remove the previous #header rules if they interfere */
+/* #header { ... } */
+/* #header.header-scrolled { ... } */
+/* #header .logo a { ... } */
+/* .navbar { ... } etc... */
 
-        #hero h1 {
-            margin: 0 0 10px 0;
-            font-size: 3rem; /* Adjusted size */
-            font-weight: 700;
-            line-height: 1.2;
-            color: var(--white-color);
-        }
-        #hero p {
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 30px; /* Keep bottom margin */
-            font-size: 1.2rem;
-            font-weight: 300;
-            max-width: 600px;
-            /* Add these two lines for horizontal centering */
-            margin-left: auto;
-            margin-right: auto;
-        }
+/* --- New Hero Section Styling --- */
+#hero {
+    width: 100%;
+    height: 100vh; /* Force full viewport height */
+    overflow: hidden; /* Prevent scrollbars from gradients/image */
+    position: relative; /* Context for potential absolute elements if needed */
+    background-color: #fff; /* Fallback background */
+    padding: 0 !important; /* Override any section padding */
+}
+
+/* Left Text Column Styling */
+.hero-text-col {
+    background: linear-gradient(135deg, #e0f7fa 0%, #ffffff 60%, #fff8e1 100%); /* Example gradient */
+    padding: 0; /* Padding handled internally */
+    position: relative; /* For header positioning if needed */
+}
+
+#header-content {
+    /* Styles for the logo container */
+    z-index: 10; /* Keep logo above gradient */
+}
+#header-content .logo a {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--dark-color);
+    letter-spacing: 1px;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+}
+#header-content .logo a span {
+    color: var(--primary-color); /* Your accent color */
+}
+
+
+.hero-text-content {
+    /* This div handles the main text centering */
+    text-align: center; /* ADD THIS LINE */
+}
+
+/* You might want to adjust max-width on subtitle if centered */
+.hero-text-content p.hero-subtitle {
+    font-family: 'Poppins', sans-serif;
+    color: var(--secondary-dark);
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    margin-bottom: 30px;
+    max-width: 450px; /* Limit width of subtitle */
+    margin-left: auto;  /* Add this for centering the paragraph */
+    margin-right: auto; /* Add this for centering the paragraph */
+}
+
+.hero-text-content h1.hero-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(3.5rem, 8vw, 6rem); /* Responsive font size */
+    font-weight: 700;
+    color: var(--dark-color);
+    line-height: 1.1;
+    margin-bottom: 20px;
+    position: relative; /* For pseudo-elements like the squiggle if desired */
+}
+/* Optional: Add squiggle effect like example */
+/* .hero-text-content h1.hero-name::after {
+    content: ''; // Use SVG or background image for squiggle
+    position: absolute;
+    top: 5px;
+    right: -10px;
+    width: 40px;
+    height: 40px;
+    background: url('path/to/squiggle.svg') no-repeat center center / contain;
+} */
+
+.hero-text-content p.hero-subtitle {
+    font-family: 'Poppins', sans-serif;
+    color: var(--secondary-dark);
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    margin-bottom: 30px;
+    max-width: 450px; /* Limit width of subtitle */
+}
+
+
+
+
+
+.hero-text-content .btn-hero {
+    display: inline-block;
+    background-color: var(--primary-color); /* <<< Use theme primary color */
+    color: var(--white-color);
+    padding: 12px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+    border: none; /* Or add a border if you prefer: border: 1px solid var(--primary-color); */
+}
+.hero-text-content .btn-hero:hover {
+    background-color: #089a95; /* <<< Use darker shade for hover */
+    color: var(--white-color);
+     /* border-color: #089a95; /* Optional: Match border color on hover */
+}
+
+
+/* Right Image Column Styling */
+.hero-img-col {
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('./hero.png'); /* Add your image path + overlay */
+    /* background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://via.placeholder.com/800x1200/555555/ffffff?text=Your+Full+Height+Photo'); Placeholder */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Navigation within Image Column */
+#hero-nav {
+    /* Basic nav styling */
+     z-index: 10;
+}
+#hero-nav .nav-link {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.5rem 0; /* Adjust padding */
+    margin: 0 0.5rem; /* Spacing between links */
+    transition: color 0.3s ease;
+    position: relative;
+}
+#hero-nav .nav-link:hover,
+#hero-nav .nav-link.active {
+    color: #ffffff;
+}
+/* Underline effect for active/hover */
+/* Navigation within Image Column */
+#hero-nav {
+    /* Basic nav styling */
+     z-index: 10;
+}
+#hero-nav .nav-link {
+    color: rgba(255, 255, 255, 0.8); /* Slightly increased opacity for better visibility */
+    font-size: 0.9rem;
+    font-weight: 500;
+    /* Adjust padding for button look */
+    padding: 0.4rem 1rem; /* Reduced vertical, increased horizontal */
+    margin: 0 0.3rem; /* Adjust spacing between links */
+    transition: all 0.3s ease; /* Transition color and background */
+    position: relative; /* Keep relative positioning if needed for other things */
+    border-radius: 50px; /* Add rounded corners like your theme buttons */
+    border: 1px solid transparent; /* Add transparent border to prevent jump on hover */
+}
+
+#hero-nav .nav-link:hover,
+#hero-nav .nav-link.active {
+    color: var(--white-color); /* White text */
+    background-color: var(--primary-color); /* Use theme's primary color for background */
+    /* Optional: Add a subtle border if you like */
+    /* border: 1px solid var(--primary-color); */
+}
+
+/* --- REMOVE OR COMMENT OUT THE ::after rules shown in Step 1 --- */
+/* #hero-nav .nav-link::after { ... } */
+/* #hero-nav .nav-link:hover::after, */
+/* #hero-nav .nav-link.active::after { ... } */
+
+
+/* Social Icons within Image Column */
+.hero-social-icons {
+    right: 30px;
+    bottom: 30px; /* Position bottom right */
+    z-index: 10;
+}
+.hero-social-icons a {
+    display: block; /* Stack vertically */
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1rem;
+    margin-bottom: 15px; /* Space between icons */
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+.hero-social-icons a:hover {
+    color: #ffffff;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 991px) {
+    #hero {
+        height: auto; /* Allow height to adjust */
+        min-height: 60vh; /* Still give some minimum height */
+    }
+    .hero-text-col {
         
+        min-height: 60vh; /* Ensure text column has height */
+        padding: 60px 0; /* Add vertical padding */
+    }
+    #header-content {
+        padding-left: 15px; /* Adjust padding */
+    }
+    .hero-text-content {
+         padding-left: 15px;
+         padding-right: 15px;
+         align-items: center; /* Center text content horizontally */
+         text-align: center;
+    }
+     .hero-text-content h1.hero-name {
+         font-size: clamp(3rem, 10vw, 4.5rem); /* Adjust font size */
+     }
+     .hero-text-content p.hero-subtitle {
+          font-size: clamp(0.9rem, 2vw, 1.1rem);
+          max-width: 90%;
+     }
 
-         #hero .btn-primary {
-             font-size: 1rem;
-             padding: 12px 35px;
-         }
+     /* Hide the nav that was inside the image column */
+     #hero-nav { display: none; }
+     /* You might want a separate mobile nav toggler now if needed */
+}
 
-         @media (max-width: 768px) {
-             #hero h1 { font-size: 2.2rem; }
-             #hero p { font-size: 1rem; }
-         }
+/* --- End Hero Section CSS --- */
 
-        /* --- About Section --- */
-        #about .content h3 {
-            font-weight: 600;
-            font-size: 1.8rem;
-        }
+/* --- Reset/Adjust original Navbar styles --- */
+/* Ensure previous mobile nav styles are removed or adapted */
+.mobile-nav-toggle { /* Hide the old toggler if not needed */
+    display: none !important;
+}
+body.mobile-nav-active::before { /* Remove overlay if not used */
+    display: none;
+}
 
-        #about .content ul {
-            list-style: none;
-            padding: 0;
-        }
+/* --- Adjust Main Content Margins/Padding --- */
+/* Add top padding to the first section after hero if needed */
+#main > section:first-of-type {
+    padding-top: var(--section-padding); /* Or a specific value */
+}
 
-        #about .content ul li {
-            padding-left: 28px;
-            position: relative;
-            margin-bottom: 10px;
-        }
+/* --- About Section - New Styles --- */
+#about {
+    background-color: var(--white-color); /* Or a very light background if needed */
+    padding: 80px 0; /* Adjust padding as needed */
+}
 
-        #about .content ul i {
-            position: absolute;
-            left: 0;
-            top: 2px;
-            font-size: 20px;
-            color: var(--primary-color);
-        }
+.about-img-wrapper {
+    min-height: 400px; /* Ensure it has some height, especially on mobile */
+}
 
-        #about .content p:last-child {
-            margin-bottom: 0;
-        }
-        #about .about-img img {
-             border-radius: 8px;
-             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-         }
+/* --- Background Shapes --- */
+.about-shape {
+    position: absolute;
+    border-radius: 15px; /* Rounded corners for shapes */
+    z-index: 1; /* Behind the main image */
+    opacity: 0.9; /* Slight transparency if desired */
+}
+
+.about-shape-1 { /* Lighter Teal/Blue Shape */
+    background-color: #e0f7fa; /* Example light teal */
+    width: 80%;
+    height: 85%;
+    top: 0;
+    left: 0;
+    transform: rotate(-8deg); /* Slight rotation */
+}
+
+.about-shape-2 { /* Green Shape */
+    background-color: #089a95;; /* Example green color */
+    width: 75%;
+    height: 70%;
+    bottom: 0;
+    left: 10%; /* Offset from left */
+     transform: rotate(5deg); /* Slight rotation */
+}
+
+/* --- Main Image --- */
+.about-main-img {
+    position: relative; /* Use relative to stack above absolute shapes */
+    z-index: 2; /* Make sure image is on top */
+    border-radius: 15px; /* Rounded corners for image */
+    max-width: 85%; /* Control image size relative to column */
+    display: block; /* Helps with margin auto */
+    margin: 5% auto 0; /* Center horizontally, push down slightly */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+}
+
+/* --- Text Content Styling --- */
+#about .content {
+    /* Padding is handled by ps-lg-5 on the column */
+}
+
+.about-intro {
+    color: #089a95; /* Green color for "About Me" */
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.about-title {
+    font-size: clamp(2.2rem, 5vw, 3rem); /* Responsive font size */
+    font-weight: 700;
+    color: var(--dark-color);
+    margin-bottom: 20px;
+    line-height: 1.2;
+    position: relative; /* For squiggle positioning */
+}
+
+/* --- Optional Squiggle --- */
+.title-squiggle {
+     display: inline-block; /* Or block */
+     width: 30px; /* Adjust size */
+     height: 20px; /* Adjust size */
+     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 50'%3E%3Cpath d='M0,25 Q25,0 50,25 T100,25' fill='none' stroke='%238BC34A' stroke-width='5'/%3E%3C/svg%3E"); /* Basic SVG squiggle (URL encoded green #8BC34A) */
+     background-repeat: no-repeat;
+     background-size: contain;
+     position: absolute; /* Position relative to title */
+     top: -5px; /* Adjust position */
+     right: 10px; /* Adjust position */
+     transform: rotate(10deg); /* Optional rotation */
+ }
+
+
+#about .content p {
+    margin-bottom: 15px;
+}
+
+/* --- Details List --- */
+
+
+/* --- Signature --- */
+.about-signature {
+    max-width: 180px; /* Control signature size */
+    height: auto;
+    opacity: 0.8; /* Make it slightly subtle */
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 991px) {
+    .about-img-wrapper {
+        margin-bottom: 40px; /* Add space below image stack on mobile */
+        min-height: 450px; /* Adjust min-height */
+    }
+     .about-main-img {
+         max-width: 75%; /* Maybe slightly smaller on mobile */
+         margin-top: 8%;
+     }
+     .about-shape-1 { width: 75%; height: 80%; }
+     .about-shape-2 { width: 70%; height: 65%; left: 5%; }
+
+    #about .content {
+        padding-left: 15px; /* Reset padding if needed */
+        text-align: center; /* Center text on mobile maybe? */
+    }
+
+     .signature-area { text-align: center; } /* Center signature */
+     .title-squiggle { /* Adjust squiggle position for centered text */
+        right: 50%;
+        transform: translateX(150%) rotate(10deg); /* Re-center roughly */
+        top: -15px;
+     }
+}
+
+@media (max-width: 767px) {
+    .about-main-img { max-width: 80%; }
+     .about-shape-1, .about-shape-2 { /* Make shapes simpler maybe */
+         transform: rotate(0);
+     }
+      .about-shape-1 { width: 80%; height: 80%; left: 5%; }
+     .about-shape-2 { width: 70%; height: 70%; left: 15%; bottom: 5%;}
+}
+
+/* --- Remove or Adjust Old About Styles --- */
+/* Comment out or delete the previous #about rules if they conflict */
+/* #about .content h3 { ... } */
+/* #about .content ul { ... } etc. */
 
         /* --- Services Section --- */
         #services {
@@ -520,48 +820,7 @@
             background-color: var(--primary-color) !important; /* Override default */
         }
 
-        /* --- Team Section --- */
-        .team-member {
-            text-align: center;
-            margin-bottom: 30px; /* Gutter replacement */
-            background: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease;
-        }
-        .team-member:hover {
-             transform: translateY(-5px);
-        }
-        .team-member img {
-            max-width: 100%;
-            height: auto;
-        }
-        .team-member .member-info {
-            padding: 25px 15px;
-        }
-        .team-member h4 {
-            font-weight: 700;
-            margin-bottom: 5px;
-            font-size: 1.1rem;
-            color: var(--dark-color);
-        }
-        .team-member span {
-            display: block;
-            font-size: 0.9rem;
-            font-weight: 400;
-            color: #aaaaaa;
-            margin-bottom: 15px;
-        }
-        .team-member .social a {
-            transition: ease-in-out 0.3s;
-            color: #aaaaaa;
-            margin: 0 8px;
-            font-size: 1.1rem;
-        }
-        .team-member .social a:hover {
-            color: var(--primary-color);
-        }
+      
 
         /* --- Blog Section --- */
          #blog {
@@ -767,141 +1026,170 @@
 </head>
 
 <body>
-
-    <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top d-flex align-items-center">
-        <div class="container d-flex align-items-center justify-content-between">
-
-            <div class="logo">
-                 <a href="index.html">THA<span>MES</span></a>
-                <!-- Or use an image: <a href="index.html"><img src="logo.png" alt="Thames Logo" class="img-fluid"></a> -->
-            </div>
-
-            <nav id="navbar" class="navbar navbar-expand-lg">
-                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav"> <!-- Changed ID slightly for convention -->
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                        <li class="nav-item"><a class="nav-link scrollto" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link scrollto" href="#services">Services</a></li>
-                        <li class="nav-item"><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
-                        <li class="nav-item"><a class="nav-link scrollto" href="#testimonials">Testimonials</a></li>
-                        <li class="nav-item"><a class="nav-link scrollto" href="#team">Team</a></li>
-                        <li class="nav-item"><a class="nav-link scrollto" href="#blog">Blog</a></li>
-                        <li class="nav-item"><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                    </ul>
+    <section id="hero" class="vh-100"> 
+        <div class="container-fluid h-100"> 
+            <div class="row h-100">
+    
+                <!-- Left Text Column -->
+                <div class="col-lg-6 hero-text-col d-flex flex-column h-100">
+    
+                    <!-- Header Content (Logo) -->
+                    <div id="header-content" class="pt-4 ps-4 ps-lg-5">
+                         <div class="logo">
+                            <!-- Use your name again -->
+                            <a href="index.html">Port<span>Folio</span></a>
+                        </div>
+                    </div>
+    
+                    <!-- Main Hero Text Content -->
+                    <div class="hero-text-content flex-grow-1 d-flex flex-column justify-content-center ps-4 ps-lg-5 pe-4 pe-lg-5">
+                        <h1 class="hero-name">Ammar<br>Ahmed</h1>
+                        <p class="hero-subtitle">Data Scientist & ML Engineer leveraging expertise to build impactful solutions.</p>
+                        <div>
+                            <a href="#contact" class="btn btn-hero scrollto">Say Hello</a> 
+                        </div>
+                    </div>
+    
                 </div>
-            </nav><!-- .navbar -->
-
-        </div>
-    </header><!-- End Header -->
-
-    <!-- ======= Hero Section ======= -->
-    <section id="hero">
-        <div class="container text-center">
-            <h1>Welcome to Thames</h1>
-            <p>We are team of talented designers making websites with passion</p>
-            <a href="#about" class="btn btn-primary scrollto">Get Started</a>
+                <!-- End Left Text Column -->
+    
+                <!-- Right Image Column -->
+                <div class="col-lg-6 hero-img-col d-none d-lg-flex flex-column h-100 p-0 position-relative"> {
+    
+                    <!-- Navigation inside Image Col -->
+                    <nav id="hero-nav" class="navbar navbar-dark ms-auto p-4">
+                        <ul class="navbar-nav flex-row">
+                            <li class="nav-item px-2"><a class="nav-link scrollto active" href="#hero">Home</a></li>
+                            <li class="nav-item px-2"><a class="nav-link scrollto" href="#about">About</a></li>
+                            <li class="nav-item px-2"><a class="nav-link scrollto" href="#skills">Skills</a></li>
+                            <li class="nav-item px-2"><a class="nav-link scrollto" href="#projects">Projects</a></li>
+                            <li class="nav-item px-2"><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                        </ul>
+                    </nav>
+    
+                    <!-- Social Icons inside Image Col -->
+                    <div class="hero-social-icons position-absolute">
+                        <a href="" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/mammarahmed/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a> 
+                        <a href="muh.ammar.ahmed@gmail.com"><i class="fas fa-envelope"></i></a> 
+                    </div>
+    
+                </div>
+                <!-- End Right Image Column -->
+    
+            </div>
         </div>
     </section><!-- End Hero -->
 
     <main id="main">
 
-        <!-- ======= About Section ======= -->
-        <section id="about" class="about">
-            <div class="container">
+ <!-- ======= About Section ======= -->
+<section id="about" class="about">
+    <div class="container">
 
-                <div class="row">
-                    <div class="col-lg-6 about-img order-lg-2">
-                        <img src="/home/ammar/Desktop/test.png" class="img-fluid" alt="About Us">
-                    </div>
-                    <div class="col-lg-6 content pt-4 pt-lg-0 order-lg-1">
-                        <h3>Voluptatem dignissimos provident quasi corporis</h3>
-                        <p class="fst-italic">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </p>
-                        <ul>
-                            <li><i class="fas fa-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                            <li><i class="fas fa-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                            <li><i class="fas fa-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-                        </ul>
-                        <p>
-                            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                            culpa qui officia deserunt mollit anim id est laborum
-                        </p>
-                         <a href="#" class="btn btn-outline-primary mt-3">Learn More</a>
-                    </div>
-                </div>
+        <div class="row align-items-center gy-5 gy-lg-0"> 
+
+            <!-- Image Column (with Shapes) -->
+            <div class="col-lg-6 order-lg-1 about-img-wrapper position-relative">
+                <div class="about-shape about-shape-1"></div>
+                <div class="about-shape about-shape-2"></div>
+
+                <img src="./about2.jpg" class="img-fluid about-main-img" alt="About Ammar Ahmed">
 
             </div>
-        </section><!-- End About Section -->
+            <!-- End Image Column -->
 
-        <!-- ======= Services Section ======= -->
-        <section id="services" class="services">
-            <div class="container">
+            <!-- Text Content Column -->
+            <div class="col-lg-6 order-lg-2 content ps-lg-5">
+                <p class="about-intro">About Me</p>
+                <h2 class="about-title">
+                    I Develop ML Systems<br>that Work
+                    <span class="title-squiggle"></span>
+                </h2>
 
-                <div class="section-title">
-                    <h2>Services</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate.</p>
-                </div>
+                <p class="fst-italic">
+                    I’m an experienced Machine Learning and AI specialist with a track record of delivering impactful data solutions 
+                    at Tesla, Bosch, Siemens, and IBM. </p>
+                <p>
+                    From deep learning to NLP, I help businesses leverage AI for automation, optimization, and decision-making. Let’s build something intelligent together!                
+                </p>
 
-                <div class="row gy-4"> <!-- {/* gy-4 adds vertical gutter */} -->
 
-                    <div class="col-lg-4 col-md-6">
-                        <div class="service-item">
-                            <div class="icon"><i class="fas fa-briefcase"></i></div>
-                            <h4><a href="#">Lorem Ipsum</a></h4>
-                            <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-                        </div>
-                    </div>
 
-                    <div class="col-lg-4 col-md-6">
-                         <div class="service-item">
-                            <div class="icon"><i class="fas fa-tasks"></i></div>
-                            <h4><a href="#">Dolor Sitema</a></h4>
-                            <p>Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip</p>
-                        </div>
-                    </div>
 
-                    <div class="col-lg-4 col-md-6">
-                        <div class="service-item">
-                            <div class="icon"><i class="fas fa-chart-bar"></i></div>
-                            <h4><a href="#">Sed ut perspiciatis</a></h4>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="service-item">
-                            <div class="icon"><i class="fas fa-binoculars"></i></div>
-                            <h4><a href="#">Nemo Enim</a></h4>
-                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-                        </div>
-                    </div>
-
-                     <div class="col-lg-4 col-md-6">
-                         <div class="service-item">
-                            <div class="icon"><i class="fas fa-sun"></i></div>
-                            <h4><a href="#">Magni Dolore</a></h4>
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-                        </div>
-                    </div>
-
-                     <div class="col-lg-4 col-md-6">
-                         <div class="service-item">
-                            <div class="icon"><i class="fas fa-calendar-alt"></i></div>
-                            <h4><a href="#">Eiusmod Tempor</a></h4>
-                            <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore</p>
-                        </div>
-                    </div>
-
-                </div>
-
+                <!-- <a href="#" class="btn btn-outline-primary mt-3">Learn More</a> -->
             </div>
-        </section><!-- End Services Section -->
+            <!-- End Text Content Column -->
+
+        </div>
+
+    </div>
+</section><!-- End About Section -->
+
+<!-- ======= Services Section ======= -->
+<section id="services" class="services">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Services</h2>
+            <p>Leveraging data science and machine learning expertise to build impactful solutions and drive data-driven decisions.</p>
+        </div>
+
+        <div class="row gy-4"> 
+
+            <div class="col-lg-4 col-md-6">
+                <div class="service-item">
+                    <div class="icon"><i class="fas fa-brain"></i></div>
+                    <h4><a href="#">Data Science & Machine Learning</a></h4>
+                    <p>Building custom models for prediction, classification, clustering, and anomaly detection to solve complex business problems.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                 <div class="service-item">
+                    <div class="icon"><i class="fas fa-project-diagram"></i></div>
+                    <h4><a href="#">Deep Learning Solutions</a></h4>
+                    <p>Implementing advanced Deep Learning models (LLMs, VisionTransformers) for tasks like forecasting, computer vision, and sequence analysis.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="service-item">
+                    <div class="icon"><i class="fas fa-cogs"></i></div>
+                    <h4><a href="#">Data Engineering & Automation</a></h4>
+                    <p>Designing and automating robust data pipelines for ETL processes, data warehousing, and efficient data handling across various systems.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="service-item">
+                    <div class="icon"><i class="fas fa-language"></i></div> 
+                    <h4><a href="#">Natural Language Processing (NLP)</a></h4>
+                    <p>Applying NLP techniques including Topic Modeling, Named Entity Recognition, Semantic Similarity, and leveraging LLMs for text analysis and automation.</p>
+                </div>
+            </div>
+
+             <div class="col-lg-4 col-md-6">
+                 <div class="service-item">
+                    <div class="icon"><i class="fas fa-chart-line"></i></div> 
+                    <h4><a href="#">Data Analysis & Visualization</a></h4>
+                    <p>Performing exploratory data analysis, creating insightful dashboards, and communicating findings to support data-driven decision-making.</p>
+                </div>
+            </div>
+
+             <div class="col-lg-4 col-md-6">
+                 <div class="service-item">
+                    <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div> 
+                    <h4><a href="#">MLOps & Cloud Deployment</a></h4>
+                    <p>Deploying, monitoring, and managing scalable machine learning systems on cloud platforms like AWS.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section><!-- End Services Section -->
 
         <!-- ======= Portfolio Section ======= -->
         <section id="portfolio" class="portfolio">
@@ -909,87 +1197,96 @@
 
                 <div class="section-title">
                     <h2>Portfolio</h2>
-                    <p>Check out our beautiful portfolio. Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem.</p>
-                </div>
+                    <p>Explore a selection of projects where I've applied data science, machine learning, and engineering techniques to deliver tangible results. These examples highlight my experience in areas such as predictive modeling, NLP, process automation, and cloud solutions, showcasing my ability to transform data into actionable insights and robust systems.</p>                </div>
 
-                 <div class="row">
-                    <div class="col-lg-12 d-flex justify-content-center">
-                        <ul id="portfolio-flters">
-                            <li data-filter="*" class="filter-active">All</li>
-                            <li data-filter=".filter-app">App</li>
-                            <li data-filter=".filter-card">Card</li>
-                            <li data-filter=".filter-web">Web</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="row portfolio-container">
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <img src="/home/ammar/Desktop/esaam.png" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>App 1</h4>
-                            <p>App</p>
+                    <div class="row">
+                        <div class="col-lg-12 d-flex justify-content-center">
+                            <ul id="portfolio-flters">
+                                <li data-filter="*" class="filter-active">All</li>
+                                <li data-filter=".filter-ml">ML/DL</li> 
+                                <li data-filter=".filter-nlp">NLP</li> 
+                                <li data-filter=".filter-data-eng">Data Engineering</li> 
+                                <li data-filter=".filter-cloud">Cloud</li> 
+                                <li data-filter=".filter-analytics">Analytics</li> 
+                            </ul>
                         </div>
                     </div>
+                    <div class="row portfolio-container">
 
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <img src="/home/ammar/Desktop/esaam.png" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Web 1</h4>
-                            <p>Web</p>
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-ml">
+                            <img src="/home/ammar/Desktop/esaam.png" class="img-fluid" alt="Forecasting Model"> 
+                            <div class="portfolio-info">
+                                <h4>Sales Forecasting Model</h4> 
+                                <p>Deep Learning (RNN/GRU) on Azure</p> 
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <img src="/home/ammar/Desktop/esaam.png" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>App 2</h4>
-                            <p>App</p>
+            
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-data-eng">
+                            <img src="/home/ammar/Desktop/esaam.png" class="img-fluid" alt="Automated Data Pipeline">
+                            <div class="portfolio-info">
+                                <h4>Automated Data Pipeline</h4>
+                                <p>Using Airflow for ETL & processing</p>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                        <img src="/home/ammar/Desktop/esaam.png" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Card 1</h4>
-                            <p>Card</p>
+            
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-nlp">
+                            <img src="/home/ammar/Desktop/esaam.png" class="img-fluid" alt="NLP Ticket System">
+                            <div class="portfolio-info">
+                                <h4>Ticket Prioritization System</h4>
+                                <p>Topic Modeling & LLM implementation</p>
+                            </div>
                         </div>
-                    </div>
-
-                     <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                        <img src="/home/ammar/Desktop/esaam.png" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Card 2</h4>
-                            <p>Card</p>
+            
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-cloud">
+                            <img src="/home/ammar/Desktop/esaam.png" class="img-fluid" alt="AWS System Migration">
+                            <div class="portfolio-info">
+                                <h4>Procurement System Migration</h4>
+                                <p>Leveraging AWS S3, EC2, Lambda</p>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <img src="/home/ammar/Desktop/esaam.png" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Web 2</h4>
-                            <p>Web</p>
+            
+                         <div class="col-lg-4 col-md-6 portfolio-item filter-analytics">
+                            <img src="/home/ammar/Desktop/esaam.png" class="img-fluid" alt="Workforce Dashboard">
+                            <div class="portfolio-info">
+                                <h4>Workforce Planning Dashboard</h4>
+                                <p>Tableau visualization for decision support</p>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                         <img src="/home/ammar/Desktop/esaam.png" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>App 3</h4>
-                            <p>App</p>
+            
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-ml">
+                            <img src="/home/ammar/Desktop/esaam.png" class="img-fluid" alt="Anomaly Detection">
+                            <div class="portfolio-info">
+                                <h4>Server Anomaly Detection</h4>
+                                <p>ML model using telemetry data</p>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <img src="/home/ammar/Desktop/esaam.png" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Web 3</h4>
-                            <p>Web</p>
+            
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-nlp">
+                             <img src="/home/ammar/Desktop/esaam.png" class="img-fluid" alt="Named Entity Recognition">
+                            <div class="portfolio-info">
+                                <h4>Log Information Extraction</h4>
+                                <p>Named Entity Recognition using spaCy</p>
+                            </div>
                         </div>
+            
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-ml"> {/* Or maybe filter-cloud */}
+                            <img src="/home/ammar/Desktop/esaam.png" class="img-fluid" alt="Data Drift Detection">
+                            <div class="portfolio-info">
+                                <h4>Data Drift Detection System</h4>
+                                <p>MLOps techniques using Pytorch</p>
+                            </div>
+                        </div>
+            
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-ml">
+                            <img src="/home/ammar/Desktop/esaam.png" class="img-fluid" alt="Computer Vision Project">
+                            <div class="portfolio-info">
+                                <h4>Radar Object Classification</h4>
+                                <p>Unsupervised Domain Adaptation (CV)</p>
+                            </div>
+                        </div>
+            
+            
                     </div>
-
-                </div>
 
             </div>
         </section><!-- End Portfolio Section -->
@@ -1000,49 +1297,47 @@
 
             <div class="section-title">
               <h2>Testimonials</h2>
-              <p>What they are saying about us. Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem.</p>
+              <p>What they are saying about us.</p>
             </div>
 
             <div class="owl-carousel owl-theme testimonials-carousel">
 
+
+
+                 <div class="testimonial-item">
+                    <p class="quote">
+                        Throughout our time together, Muhammad consistently impressed me with his technical skills, problem-solving abilities, and collaborative spirit. He is a highly motivated and results-oriented individual who consistently delivers high-quality work.</p>
+                    <div class="author">
+                        <h4>Raimar Kuehn</h4>
+                        <span>Manager, Google</span>
+                    </div>
+                </div><!-- End testimonial item -->
+
                 <div class="testimonial-item">
                     <p class="quote">
-                    Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                        As Ammar's functional manager at IBM, I found Ammar ambitious, clear and proactive in his approach ato acquiring and applying Data Science skillset in his work. He invested in his learning along side his project activities and contributed immensely</p>
+                    <div class="author">
+                        <h4>Sidra Ashraf</h4>
+                        <span>GTM Leader, IBM</span>
+                    </div>
+                </div><!-- End testimonial item -->
+
+                 <div class="testimonial-item">
+                    <p class="quote">
+                        I have known Ammar for the last 2.5 years as he has been part of my team in multiple projects when he was working as Data Scientist in IBM. He is a reliable, dependable and industrious resource who has the strong ability to work under pressure                     </p>
+                    <div class="author">
+                        <h4>Madiha Ijaz</h4>
+                        <span>Senior Leader, IBM</span>
+                    </div>
+                </div><!-- End testimonial item -->
+                <div class="testimonial-item">
+                    <p class="quote">
+                        Muhammad delivered the project on time and on budget. Looking forward to working with him again.
                     </p>
                     <div class="author">
                         <!-- <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt=""> -->
-                        <h4>Saul Goodman</h4>
-                        <span>Ceo &amp; Founder</span>
-                    </div>
-                </div><!-- End testimonial item -->
-
-                 <div class="testimonial-item">
-                    <p class="quote">
-                    Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                    </p>
-                    <div class="author">
-                        <h4>Sara Wilsson</h4>
-                        <span>Designer</span>
-                    </div>
-                </div><!-- End testimonial item -->
-
-                <div class="testimonial-item">
-                    <p class="quote">
-                    Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                    </p>
-                    <div class="author">
-                        <h4>Jena Karlis</h4>
-                        <span>Store Owner</span>
-                    </div>
-                </div><!-- End testimonial item -->
-
-                 <div class="testimonial-item">
-                    <p class="quote">
-                    Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                    </p>
-                    <div class="author">
-                        <h4>Matt Brandon</h4>
-                        <span>Freelancer</span>
+                        <h4>Josh Heslin</h4>
+                        <span>Ceo, Cloutly</span>
                     </div>
                 </div><!-- End testimonial item -->
 
@@ -1051,86 +1346,6 @@
           </div>
         </section><!-- End Testimonials Section -->
 
-        <!-- ======= Team Section ======= -->
-        <section id="team" class="team">
-            <div class="container">
-
-                <div class="section-title">
-                    <h2>Team</h2>
-                    <p>Our hard working team. Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem.</p>
-                </div>
-
-                <div class="row gy-4"> 
-                    <!-- {/* Add gy-4 for vertical spacing */} -->
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="team-member">
-                            <img src="/home/ammar/Desktop/esaam.png" class="img-fluid" alt="">
-                            <div class="member-info">
-                                <h4>Walter White</h4>
-                                <span>Chief Executive Officer</span>
-                                <div class="social mt-2">
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6">
-                         <div class="team-member">
-                            <img src="/home/ammar/Desktop/esaam.png" class="img-fluid" alt="">
-                            <div class="member-info">
-                                <h4>Sarah Jhonson</h4>
-                                <span>Product Manager</span>
-                                <div class="social mt-2">
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="team-member">
-                            <img src="/home/ammar/Desktop/esaam.png" class="img-fluid" alt="">
-                            <div class="member-info">
-                                <h4>William Anderson</h4>
-                                <span>CTO</span>
-                                <div class="social mt-2">
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                     <div class="col-lg-3 col-md-6">
-                         <div class="team-member">
-                            <img src="/home/ammar/Desktop/esaam.png" class="img-fluid" alt="">
-                            <div class="member-info">
-                                <h4>Amanda Jepson</h4>
-                                <span>Accountant</span>
-                                 <div class="social mt-2">
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section><!-- End Team Section -->
 
         <!-- ======= Blog Section ======= -->
         <section id="blog" class="blog">
@@ -1218,7 +1433,7 @@
 
                 <div class="section-title">
                     <h2>Contact Us</h2>
-                    <p>Get in touch with us. Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem.</p>
+                    <p>Get in touch with me. </p>
                 </div>
 
                 <div class="row gy-4"> <!--{/* Add gy-4 */} -->
@@ -1228,21 +1443,21 @@
                                 <div class="info-box">
                                     <i class="fas fa-map-marker-alt"></i>
                                     <h3>Address</h3>
-                                    <p>A108 Adam Street,<br>New York, NY 535022</p>
+                                    <p>Berlin, BER Germany</p>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-12">
                                 <div class="info-box">
                                     <i class="far fa-envelope"></i>
                                     <h3>Email Us</h3>
-                                    <p>info@example.com<br>contact@example.com</p>
+                                    <p>muh.ammar.ahmed@gmail.com</p>
                                 </div>
                             </div>
                              <div class="col-md-6 col-lg-12">
                                 <div class="info-box">
                                     <i class="fas fa-phone"></i>
-                                    <h3>Call Us</h3>
-                                    <p>+1 5589 55488 55<br>+1 6678 254445 41</p>
+                                    <h3>Contact</h3>
+                                    <p>+491773830455<br>+923363733781</p>
                                 </div>
                             </div>
                         </div>
@@ -1285,14 +1500,9 @@
     <footer id="footer">
         <div class="container">
             <div class="copyright">
-                &copy; Copyright <strong><span>Thames</span></strong>. All Rights Reserved
+                &copy; Copyright <strong><span>Ammar</span></strong>. All Rights Reserved
             </div>
             <div class="credits">
-                <!-- All the links in the footer should remain intact. -->
-                <!-- You can delete the links only if you purchased the pro version. -->
-                <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/thames-multipurpose-bootstrap-template/ -->
-                Simplified Replica using Bootstrap
             </div>
         </div>
     </footer><!-- End Footer -->
@@ -1346,6 +1556,7 @@
                 dots: true,
                 responsive: { 0: { items: 1 }, 768: { items: 2 }, 992: { items: 3 } }
             });
+            
 
             // --- Isotope Portfolio Filtering ---
             var portfolioContainer = $('.portfolio-container');
